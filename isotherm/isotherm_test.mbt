@@ -11,11 +11,17 @@ test "fit_langmuir basic" {
   ]
   let params = @isotherm.fit_langmuir(data)
   // Due to floating point math, check boundaries
-  if !(params.q_m > 9.9 && params.q_m < 10.1) { panic() }
-  if !(params.k_l > 0.49 && params.k_l < 0.51) { panic() }
-  
+  if !(params.q_m > 9.9 && params.q_m < 10.1) {
+    panic()
+  }
+  if !(params.k_l > 0.49 && params.k_l < 0.51) {
+    panic()
+  }
+
   let pred = @isotherm.predict_langmuir(params, 2.0)
-  if !(pred > 4.9 && pred < 5.1) { panic() }
+  if !(pred > 4.9 && pred < 5.1) {
+    panic()
+  }
 }
 
 ///|
@@ -29,11 +35,17 @@ test "fit_freundlich basic" {
     @isotherm.AdsorptionData::{ c: 16.0, q: 8.0 },
   ]
   let params = @isotherm.fit_freundlich(data)
-  if !(params.k_f > 1.9 && params.k_f < 2.1) { panic() }
-  if !(params.n > 1.9 && params.n < 2.1) { panic() }
-  
+  if !(params.k_f > 1.9 && params.k_f < 2.1) {
+    panic()
+  }
+  if !(params.n > 1.9 && params.n < 2.1) {
+    panic()
+  }
+
   let pred = @isotherm.predict_freundlich(params, 4.0)
-  if !(pred > 3.9 && pred < 4.1) { panic() }
+  if !(pred > 3.9 && pred < 4.1) {
+    panic()
+  }
 }
 
 ///|
@@ -46,9 +58,15 @@ test "fit_temkin basic" {
     @isotherm.AdsorptionData::{ c: 5.0, q: 3.0 * @math.ln(10.0) },
   ]
   let params = @isotherm.fit_temkin(data)
-  if !(params.b > 2.9 && params.b < 3.1) { panic() }
-  if !(params.a_t > 1.9 && params.a_t < 2.1) { panic() }
-  
+  if !(params.b > 2.9 && params.b < 3.1) {
+    panic()
+  }
+  if !(params.a_t > 1.9 && params.a_t < 2.1) {
+    panic()
+  }
+
   let pred = @isotherm.predict_temkin(params, 1.0)
-  if !(pred > 3.0 * @math.ln(2.0) - 0.01 && pred < 3.0 * @math.ln(2.0) + 0.01) { panic() }
+  if !(pred > 3.0 * @math.ln(2.0) - 0.01 && pred < 3.0 * @math.ln(2.0) + 0.01) {
+    panic()
+  }
 }

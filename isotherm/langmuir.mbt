@@ -20,12 +20,16 @@ pub fn fit_langmuir(data : Array[AdsorptionData]) -> LangmuirParams {
   }
   let reg = @utils.linear_regression(points)
   let q_m = if reg.slope != 0.0 { 1.0 / reg.slope } else { 0.0 }
-  let k_l = if reg.intercept != 0.0 && q_m != 0.0 { 1.0 / (reg.intercept * q_m) } else { 0.0 }
+  let k_l = if reg.intercept != 0.0 && q_m != 0.0 {
+    1.0 / (reg.intercept * q_m)
+  } else {
+    0.0
+  }
   { q_m, k_l, r_squared: reg.r_squared }
 }
 
 ///|
 /// Predicts the adsorption capacity (q) for a given concentration (c) using the Langmuir model.
 pub fn predict_langmuir(params : LangmuirParams, c : Double) -> Double {
-  (params.q_m * params.k_l * c) / (1.0 + params.k_l * c)
+  params.q_m * params.k_l * c / (1.0 + params.k_l * c)
 }

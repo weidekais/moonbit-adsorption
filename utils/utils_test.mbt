@@ -6,9 +6,9 @@ test "linear_regression simple" {
     @utils.Point::{ x: 3.0, y: 6.0 },
   ]
   let result = @utils.linear_regression(points)
-  inspect!(result.slope, content="2")
-  inspect!(result.intercept, content="0")
-  inspect!(result.r_squared, content="1")
+  inspect(result.slope, content="2")
+  inspect(result.intercept, content="0")
+  inspect(result.r_squared, content="1")
 }
 
 ///|
@@ -21,9 +21,15 @@ test "linear_regression with noise" {
   ]
   let result = @utils.linear_regression(points)
   // Check approximate values
-  assert_true!(result.slope > 0.9 && result.slope < 1.1)
-  assert_true!(result.intercept > 0.8 && result.intercept < 1.2)
-  assert_true!(result.r_squared > 0.95)
+  if !(result.slope > 0.9 && result.slope < 1.1) {
+    panic()
+  }
+  if !(result.intercept > 0.8 && result.intercept < 1.2) {
+    panic()
+  }
+  if !(result.r_squared > 0.95) {
+    panic()
+  }
 }
 
 ///|

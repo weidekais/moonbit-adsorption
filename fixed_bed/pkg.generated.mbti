@@ -1,0 +1,27 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "liuminyuan/moonbit-adsorption/fixed_bed"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn calculate_thomas_breakthrough(Double, Double, Double, Double, Double, Double) -> Double
+
+pub fn estimate_thomas_time(Double, Double, Double, Double, Double, Double) -> Double
+
+// Errors
+
+// Types and methods
+pub(all) struct FixedBedParams {
+  bed_length : Double
+  velocity : Double
+  porosity : Double
+  bulk_density : Double
+  initial_concentration : Double
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
+

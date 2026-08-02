@@ -1,0 +1,30 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "liuminyuan/moonbit-adsorption/utils"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn linear_regression(Array[Point]) -> LinearRegressionResult
+
+pub fn to_csv(Array[Point], header? : String) -> String
+
+// Errors
+
+// Types and methods
+pub(all) struct LinearRegressionResult {
+  slope : Double
+  intercept : Double
+  r_squared : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct Point {
+  x : Double
+  y : Double
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
+

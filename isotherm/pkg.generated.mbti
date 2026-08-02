@@ -1,0 +1,50 @@
+// Generated using `moon info`, DON'T EDIT IT
+package "liuminyuan/moonbit-adsorption/isotherm"
+
+import {
+  "moonbitlang/core/debug",
+}
+
+// Values
+pub fn fit_freundlich(Array[AdsorptionData]) -> FreundlichParams
+
+pub fn fit_langmuir(Array[AdsorptionData]) -> LangmuirParams
+
+pub fn fit_temkin(Array[AdsorptionData]) -> TemkinParams
+
+pub fn predict_freundlich(FreundlichParams, Double) -> Double
+
+pub fn predict_langmuir(LangmuirParams, Double) -> Double
+
+pub fn predict_temkin(TemkinParams, Double) -> Double
+
+// Errors
+
+// Types and methods
+pub(all) struct AdsorptionData {
+  c : Double
+  q : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct FreundlichParams {
+  k_f : Double
+  n : Double
+  r_squared : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct LangmuirParams {
+  q_m : Double
+  k_l : Double
+  r_squared : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct TemkinParams {
+  a_t : Double
+  b : Double
+  r_squared : Double
+} derive(Eq, @debug.Debug)
+
+// Type aliases
+
+// Traits
+
