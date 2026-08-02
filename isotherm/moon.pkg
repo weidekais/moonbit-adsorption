@@ -1,5 +1,5 @@
 import {
-  "liuminyuan/moonbit-adsorption/utils",
+  "weidekais/moonbit-adsorption/utils",
   "moonbitlang/core/math",
 }
 

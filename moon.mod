@@ -1,4 +1,4 @@
-name = "liuminyuan/moonbit-adsorption"
+name = "weidekais/moonbit-adsorption"
 
 version = "0.1.0"
 
