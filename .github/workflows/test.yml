@@ -27,7 +27,7 @@ jobs:
         run: moon test
 
       - name: fmt
-        run: moon fmt --deny-warn
+        run: moon fmt -- --deny-warn
 
       - name: info
-        run: moon info --deny-warn
+        run: moon info -- --deny-warn
