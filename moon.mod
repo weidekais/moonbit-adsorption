@@ -1,0 +1,11 @@
+name = "liuminyuan/moonbit-adsorption"
+version = "0.1.0"
+readme = "README.mbt.md"
+repository = "https://github.com/liuminyuan/moonbit-adsorption"
+license = "Apache-2.0"
+keywords = ["adsorption", "chemistry", "isotherm", "fixed-bed"]
+description = "A MoonBit library for adsorption isotherm and fixed-bed breakthrough curve calculations."
+
+options(
+  "preferred-target": "all"
+)
