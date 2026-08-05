@@ -37,3 +37,23 @@ test "panic linear_regression empty" {
   let points : Array[@utils.Point] = []
   ignore(@utils.linear_regression(points))
 }
+
+///|
+test "nelder_mead optimization" {
+  // Test function: f(x, y) = (x - 3.0)^2 + (y - 5.0)^2 + 10.0
+  // Minimum should be at [3.0, 5.0]
+  let f = fn(params : Array[Double]) -> Double {
+    let x = params[0]
+    let y = params[1]
+    (x - 3.0) * (x - 3.0) + (y - 5.0) * (y - 5.0) + 10.0
+  }
+  let init_guess = [0.0, 0.0]
+  let result = @utils.nelder_mead(f, init_guess, 1.0e-6, 1000)
+
+  if !(result[0] > 2.99 && result[0] < 3.01) {
+    panic()
+  }
+  if !(result[1] > 4.99 && result[1] < 5.01) {
+    panic()
+  }
+}

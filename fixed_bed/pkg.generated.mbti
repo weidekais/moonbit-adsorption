@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "liuminyuan/moonbit-adsorption/fixed_bed"
+package "weidekais/moonbit-adsorption/fixed_bed"
 
 import {
   "moonbitlang/core/debug",
@@ -10,9 +10,34 @@ pub fn calculate_thomas_breakthrough(Double, Double, Double, Double, Double, Dou
 
 pub fn estimate_thomas_time(Double, Double, Double, Double, Double, Double) -> Double
 
+pub fn simulate_column(ColumnSimulationConfig, (Double) -> Double, (Double) -> Double) -> ColumnSimulationResult
+
 // Errors
 
 // Types and methods
+pub(all) struct BreakthroughPoint {
+  time : Double
+  outlet_concentration : Double
+  outlet_ratio : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct ColumnSimulationConfig {
+  bed_length : Double
+  velocity : Double
+  porosity : Double
+  bulk_density : Double
+  ldf_coefficient : Double
+  grid_points : Int
+  time_step : Double
+  total_time : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct ColumnSimulationResult {
+  breakthrough_curve : Array[BreakthroughPoint]
+  final_concentration_profile : Array[Double]
+  final_adsorbed_profile : Array[Double]
+} derive(Eq, @debug.Debug)
+
 pub(all) struct FixedBedParams {
   bed_length : Double
   velocity : Double

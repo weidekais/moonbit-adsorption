@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "liuminyuan/moonbit-adsorption/utils"
+package "weidekais/moonbit-adsorption/utils"
 
 import {
   "moonbitlang/core/debug",
@@ -7,6 +7,8 @@ import {
 
 // Values
 pub fn linear_regression(Array[Point]) -> LinearRegressionResult
+
+pub fn nelder_mead((Array[Double]) -> Double, Array[Double], Double, Int) -> Array[Double]
 
 pub fn to_csv(Array[Point], header? : String) -> String
 

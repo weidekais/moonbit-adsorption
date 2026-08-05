@@ -26,3 +26,40 @@ test "estimate_thomas_time" {
     panic()
   }
 }
+
+///|
+test "simulate_column basic" {
+  let config = @fixed_bed.ColumnSimulationConfig::{
+    bed_length: 10.0,
+    velocity: 2.0,
+    porosity: 0.4,
+    bulk_density: 0.8,
+    ldf_coefficient: 0.5,
+    grid_points: 11,
+    time_step: 0.05,
+    total_time: 1.0,
+  }
+
+  // Use a simple Langmuir isotherm callback
+  let isotherm = fn(c : Double) -> Double {
+    let q_m = 10.0
+    let k_l = 0.5
+    q_m * k_l * c / (1.0 + k_l * c)
+  }
+
+  // Constant feed concentration of 10.0 mg/L
+  let feed = fn(_t : Double) -> Double { 10.0 }
+
+  let res = @fixed_bed.simulate_column(config, isotherm, feed)
+
+  // Verify that the final outlet concentration ratio is between 0.0 and 1.0
+  let final_ratio = res.breakthrough_curve[res.breakthrough_curve.length() - 1].outlet_ratio
+  if !(final_ratio >= 0.0 && final_ratio <= 1.0) {
+    panic()
+  }
+
+  // Check the final profile size matches grid_points
+  if res.final_concentration_profile.length() != 11 {
+    panic()
+  }
+}

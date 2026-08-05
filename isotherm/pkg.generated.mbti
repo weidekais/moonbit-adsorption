@@ -1,5 +1,5 @@
 // Generated using `moon info`, DON'T EDIT IT
-package "liuminyuan/moonbit-adsorption/isotherm"
+package "weidekais/moonbit-adsorption/isotherm"
 
 import {
   "moonbitlang/core/debug",
