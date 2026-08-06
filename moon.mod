@@ -4,7 +4,7 @@ version = "0.1.0"
 
 readme = "README.mbt.md"
 
-repository = "https://github.com/liuminyuan/moonbit-adsorption"
+repository = "https://github.com/weidekais/moonbit-adsorption"
 
 license = "Apache-2.0"
 
