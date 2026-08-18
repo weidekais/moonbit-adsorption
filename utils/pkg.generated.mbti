@@ -6,19 +6,191 @@ import {
 }
 
 // Values
+pub fn aic(Double, Int, Int) -> Double
+
+pub fn all_nonnegative(Array[Double]) -> Bool
+
+pub fn argmax(Array[Double]) -> Int
+
+pub fn argmin(Array[Double]) -> Int
+
+pub fn bic(Double, Int, Int) -> Double
+
+pub fn bootstrap_mean(Array[Array[Double]]) -> ConfidenceInterval
+
+pub fn center_points(ExperimentPlan) -> Array[Double]
+
+pub fn choose_best_model(Array[Double]) -> Int
+
+pub fn clamp(Double, Double, Double) -> Double
+
+pub fn convolution(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn correlation(Array[Double], Array[Double]) -> Double
+
+pub fn covariance(Array[Double], Array[Double]) -> Double
+
+pub fn cumulative_trapezoid(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn determinant_2x2(Matrix) -> Double
+
+pub fn elasticity((Double) -> Double, Double, Double) -> Double
+
+pub fn exponential_smoothing(Array[Double], Double) -> Array[Double]
+
+pub fn finite_difference_sensitivity((Double) -> Double, Double, Double) -> SensitivityPoint
+
+pub fn finite_or_zero(Double) -> Double
+
+pub fn first_difference(Array[Double]) -> Array[Double]
+
+pub fn full_factorial(String, Array[String], Array[Double], Array[Double], Int, Int) -> ExperimentPlan
+
+pub fn linear_interpolate(Double, Array[Double], Array[Double]) -> Double
+
 pub fn linear_regression(Array[Point]) -> LinearRegressionResult
+
+pub fn linspace(Double, Double, Int) -> Array[Double]
+
+pub fn mae(Array[Double], Array[Double]) -> Double
+
+pub fn matrix(Int, Int, Array[Double]) -> Matrix
+
+pub fn matrix_add(Matrix, Matrix) -> Matrix
+
+pub fn matrix_column(Matrix, Int) -> Array[Double]
+
+pub fn matrix_condition_proxy(Matrix) -> Double
+
+pub fn matrix_frobenius(Matrix) -> Double
+
+pub fn matrix_get(Matrix, Int, Int) -> Double
+
+pub fn matrix_identity(Int) -> Matrix
+
+pub fn matrix_is_symmetric(Matrix, Double) -> Bool
+
+pub fn matrix_multiply(Matrix, Matrix) -> Matrix
+
+pub fn matrix_row(Matrix, Int) -> Array[Double]
+
+pub fn matrix_scale(Matrix, Double) -> Matrix
+
+pub fn matrix_set(Matrix, Int, Int, Double) -> Matrix
+
+pub fn matrix_subtract(Matrix, Matrix) -> Matrix
+
+pub fn matrix_trace(Matrix) -> Double
+
+pub fn matrix_transpose(Matrix) -> Matrix
+
+pub fn matrix_vector(Matrix, Array[Double]) -> Array[Double]
+
+pub fn matrix_zero(Int, Int) -> Matrix
+
+pub fn mean(Array[Double]) -> Double
+
+pub fn moving_average(Array[Double], Int) -> Array[Double]
+
+pub fn mse(Array[Double], Array[Double]) -> Double
 
 pub fn nelder_mead((Array[Double]) -> Double, Array[Double], Double, Int) -> Array[Double]
 
+pub fn normal_equations(Array[Point]) -> Matrix
+
+pub fn normal_interval(Array[Double], Double, Double) -> ConfidenceInterval
+
+pub fn normal_rhs(Array[Point]) -> Array[Double]
+
+pub fn normalized(Array[Double]) -> Array[Double]
+
+pub fn percentile(Array[Double], Double) -> Double
+
+pub fn polynomial_derivative(Array[Double], Double) -> Double
+
+pub fn polynomial_integral(Array[Double], Double, Double) -> Double
+
+pub fn polynomial_value(Array[Double], Double) -> Double
+
+pub fn r_squared(Array[Double], Array[Double]) -> Double
+
+pub fn rank(Array[Double]) -> Array[Int]
+
+pub fn relative_error(Double, Double) -> Double
+
+pub fn resample_uniform(Array[Double], Array[Double], Int) -> Array[Point]
+
+pub fn residuals(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn rmse(Array[Double], Array[Double]) -> Double
+
+pub fn sanitize_nonnegative(Array[Double]) -> Array[Double]
+
+pub fn scale_to_unit(Double, Double, Double) -> Double
+
+pub fn second_difference(Array[Double]) -> Array[Double]
+
+pub fn sensitivity_curve((Double) -> Double, Array[Double], Double) -> Array[SensitivityPoint]
+
+pub fn simpson_area(Array[Double], Array[Double]) -> Double
+
+pub fn solve_2x2(Matrix, Array[Double]) -> Array[Double]
+
+pub fn solve_linear_fit(Array[Point]) -> LinearRegressionResult
+
+pub fn standard_deviation(Array[Double]) -> Double
+
+pub fn strictly_increasing(Array[Double]) -> Bool
+
+pub fn summarize(Array[Double]) -> Summary
+
 pub fn to_csv(Array[Point], header? : String) -> String
+
+pub fn trapezoid_area(Array[Double], Array[Double]) -> Double
+
+pub fn unscale_from_unit(Double, Double, Double) -> Double
+
+pub fn valid_report() -> ValidationReport
+
+pub fn validate_pairs(Array[Double], Array[Double]) -> ValidationReport
+
+pub fn validate_positive_pairs(Array[Double], Array[Double]) -> ValidationReport
+
+pub fn validate_probability(Double) -> Bool
+
+pub fn validate_range(Double, Double) -> Bool
+
+pub fn variance(Array[Double]) -> Double
+
+pub fn weighted_rmse(Array[Double], Array[Double], Array[Double]) -> Double
 
 // Errors
 
 // Types and methods
+pub(all) struct ConfidenceInterval {
+  estimate : Double
+  lower : Double
+  upper : Double
+  confidence : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct ExperimentPlan {
+  name : String
+  factors : Array[String]
+  levels : Array[Array[Double]]
+  replicates : Int
+} derive(Eq, @debug.Debug)
+
 pub(all) struct LinearRegressionResult {
   slope : Double
   intercept : Double
   r_squared : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct Matrix {
+  rows : Int
+  columns : Int
+  values : Array[Double]
 } derive(Eq, @debug.Debug)
 
 pub(all) struct Point {
@@ -26,7 +198,28 @@ pub(all) struct Point {
   y : Double
 } derive(Eq, @debug.Debug)
 
+pub(all) struct SensitivityPoint {
+  input : Double
+  output : Double
+  local_sensitivity : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct Summary {
+  count : Int
+  minimum : Double
+  maximum : Double
+  mean : Double
+  variance : Double
+  standard_deviation : Double
+  sum : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct ValidationReport {
+  valid : Bool
+  errors : Array[String]
+  warnings : Array[String]
+} derive(Eq, @debug.Debug)
+
 // Type aliases
 
 // Traits
-

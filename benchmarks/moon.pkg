@@ -1,0 +1,6 @@
+import {
+  "weidekais/moonbit-adsorption/fixed_bed",
+  "weidekais/moonbit-adsorption/isotherm",
+}
+
+pkgtype(kind: "executable")

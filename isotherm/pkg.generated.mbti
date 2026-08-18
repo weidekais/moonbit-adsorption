@@ -3,20 +3,157 @@ package "weidekais/moonbit-adsorption/isotherm"
 
 import {
   "moonbitlang/core/debug",
+  "weidekais/moonbit-adsorption/utils",
 }
 
 // Values
+pub fn fit_bet(Array[AdsorptionData]) -> BetParams
+
+pub fn fit_dubinin_radushkevich(Array[AdsorptionData], Double) -> DubininRadushkevichParams
+
+pub fn fit_elovich(Array[KineticData]) -> ElovichParams
+
 pub fn fit_freundlich(Array[AdsorptionData]) -> FreundlichParams
+
+pub fn fit_intraparticle(Array[KineticData]) -> IntraparticleParams
 
 pub fn fit_langmuir(Array[AdsorptionData]) -> LangmuirParams
 
+pub fn fit_pseudo_first_order(Array[KineticData]) -> PseudoFirstOrderParams
+
+pub fn fit_pseudo_second_order(Array[KineticData]) -> PseudoSecondOrderParams
+
+pub fn fit_redlich_peterson(Array[AdsorptionData]) -> RedlichPetersonParams
+
+pub fn fit_sips(Array[AdsorptionData]) -> SipsParams
+
 pub fn fit_temkin(Array[AdsorptionData]) -> TemkinParams
+
+pub fn fit_toth(Array[AdsorptionData]) -> TothParams
+
+pub fn freundlich_capacity_average(FreundlichParams, Array[Double]) -> Double
+
+pub fn freundlich_capacity_integral(FreundlichParams, Double, Double, Int) -> Double
+
+pub fn freundlich_capacity_maximum(FreundlichParams, Array[Double]) -> Double
+
+pub fn freundlich_capacity_minimum(FreundlichParams, Array[Double]) -> Double
+
+pub fn freundlich_curve(FreundlichParams, Array[Double]) -> Array[Double]
+
+pub fn freundlich_elasticity(FreundlichParams, Double, Double) -> Double
+
+pub fn freundlich_finite_sensitivity(FreundlichParams, Double, Double) -> @utils.SensitivityPoint
+
+pub fn freundlich_is_monotone(FreundlichParams, Double, Double, Int) -> Bool
+
+pub fn half_time_pseudo_first_order(PseudoFirstOrderParams) -> Double
+
+pub fn half_time_pseudo_second_order(PseudoSecondOrderParams) -> Double
+
+pub fn initial_rate_pseudo_second_order(PseudoSecondOrderParams) -> Double
+
+pub fn kinetic_conversion(Array[KineticData], Double, Double) -> Array[Double]
+
+pub fn langmuir_capacity_average(LangmuirParams, Array[Double]) -> Double
+
+pub fn langmuir_capacity_integral(LangmuirParams, Double, Double, Int) -> Double
+
+pub fn langmuir_capacity_maximum(LangmuirParams, Array[Double]) -> Double
+
+pub fn langmuir_capacity_minimum(LangmuirParams, Array[Double]) -> Double
+
+pub fn langmuir_curve(LangmuirParams, Array[Double]) -> Array[Double]
+
+pub fn langmuir_elasticity(LangmuirParams, Double, Double) -> Double
+
+pub fn langmuir_finite_sensitivity(LangmuirParams, Double, Double) -> @utils.SensitivityPoint
+
+pub fn langmuir_is_monotone(LangmuirParams, Double, Double, Int) -> Bool
+
+pub fn model_aic(Array[Double], Array[Double], Int) -> Double
+
+pub fn model_bic(Array[Double], Array[Double], Int) -> Double
+
+pub fn model_mae(Array[Double], Array[Double]) -> Double
+
+pub fn model_rmse(Array[Double], Array[Double]) -> Double
+
+pub fn predict_bet(BetParams, Double) -> Double
+
+pub fn predict_dubinin_radushkevich(DubininRadushkevichParams, Double, Double) -> Double
+
+pub fn predict_elovich(ElovichParams, Double) -> Double
 
 pub fn predict_freundlich(FreundlichParams, Double) -> Double
 
+pub fn predict_halsey(HalseyParams, Double) -> Double
+
+pub fn predict_harkin_jura(HarkinJuraParams, Double) -> Double
+
+pub fn predict_intraparticle(IntraparticleParams, Double) -> Double
+
 pub fn predict_langmuir(LangmuirParams, Double) -> Double
 
+pub fn predict_pseudo_first_order(PseudoFirstOrderParams, Double) -> Double
+
+pub fn predict_pseudo_second_order(PseudoSecondOrderParams, Double) -> Double
+
+pub fn predict_redlich_peterson(RedlichPetersonParams, Double) -> Double
+
+pub fn predict_sips(SipsParams, Double) -> Double
+
 pub fn predict_temkin(TemkinParams, Double) -> Double
+
+pub fn predict_toth(TothParams, Double) -> Double
+
+pub fn sips_capacity_average(SipsParams, Array[Double]) -> Double
+
+pub fn sips_capacity_integral(SipsParams, Double, Double, Int) -> Double
+
+pub fn sips_capacity_maximum(SipsParams, Array[Double]) -> Double
+
+pub fn sips_capacity_minimum(SipsParams, Array[Double]) -> Double
+
+pub fn sips_curve(SipsParams, Array[Double]) -> Array[Double]
+
+pub fn sips_elasticity(SipsParams, Double, Double) -> Double
+
+pub fn sips_finite_sensitivity(SipsParams, Double, Double) -> @utils.SensitivityPoint
+
+pub fn sips_is_monotone(SipsParams, Double, Double, Int) -> Bool
+
+pub fn temkin_capacity_average(TemkinParams, Array[Double]) -> Double
+
+pub fn temkin_capacity_integral(TemkinParams, Double, Double, Int) -> Double
+
+pub fn temkin_capacity_maximum(TemkinParams, Array[Double]) -> Double
+
+pub fn temkin_capacity_minimum(TemkinParams, Array[Double]) -> Double
+
+pub fn temkin_curve(TemkinParams, Array[Double]) -> Array[Double]
+
+pub fn temkin_elasticity(TemkinParams, Double, Double) -> Double
+
+pub fn temkin_finite_sensitivity(TemkinParams, Double, Double) -> @utils.SensitivityPoint
+
+pub fn temkin_is_monotone(TemkinParams, Double, Double, Int) -> Bool
+
+pub fn toth_capacity_average(TothParams, Array[Double]) -> Double
+
+pub fn toth_capacity_integral(TothParams, Double, Double, Int) -> Double
+
+pub fn toth_capacity_maximum(TothParams, Array[Double]) -> Double
+
+pub fn toth_capacity_minimum(TothParams, Array[Double]) -> Double
+
+pub fn toth_curve(TothParams, Array[Double]) -> Array[Double]
+
+pub fn toth_elasticity(TothParams, Double, Double) -> Double
+
+pub fn toth_finite_sensitivity(TothParams, Double, Double) -> @utils.SensitivityPoint
+
+pub fn toth_is_monotone(TothParams, Double, Double, Int) -> Bool
 
 // Errors
 
@@ -26,15 +163,82 @@ pub(all) struct AdsorptionData {
   q : Double
 } derive(Eq, @debug.Debug)
 
+pub(all) struct BetParams {
+  q_m : Double
+  c_b : Double
+  r_squared : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct DubininRadushkevichParams {
+  q_s : Double
+  beta : Double
+  r_squared : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct ElovichParams {
+  alpha : Double
+  beta : Double
+  r_squared : Double
+} derive(Eq, @debug.Debug)
+
 pub(all) struct FreundlichParams {
   k_f : Double
   n : Double
   r_squared : Double
 } derive(Eq, @debug.Debug)
 
+pub(all) struct HalseyParams {
+  a : Double
+  b : Double
+  r_squared : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct HarkinJuraParams {
+  a : Double
+  b : Double
+  r_squared : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct IntraparticleParams {
+  k_p : Double
+  intercept : Double
+  r_squared : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct KineticData {
+  time : Double
+  q : Double
+} derive(Eq, @debug.Debug)
+
 pub(all) struct LangmuirParams {
   q_m : Double
   k_l : Double
+  r_squared : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct PseudoFirstOrderParams {
+  q_e : Double
+  k_1 : Double
+  r_squared : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct PseudoSecondOrderParams {
+  q_e : Double
+  k_2 : Double
+  r_squared : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct RedlichPetersonParams {
+  a : Double
+  b : Double
+  g : Double
+  r_squared : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct SipsParams {
+  q_m : Double
+  k_s : Double
+  n_s : Double
   r_squared : Double
 } derive(Eq, @debug.Debug)
 
@@ -44,7 +248,13 @@ pub(all) struct TemkinParams {
   r_squared : Double
 } derive(Eq, @debug.Debug)
 
+pub(all) struct TothParams {
+  q_m : Double
+  k_t : Double
+  n_t : Double
+  r_squared : Double
+} derive(Eq, @debug.Debug)
+
 // Type aliases
 
 // Traits
-

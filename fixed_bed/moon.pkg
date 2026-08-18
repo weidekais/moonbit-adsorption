@@ -1,4 +1,5 @@
 import {
+  "weidekais/moonbit-adsorption/utils",
   "moonbitlang/core/math",
 }
 

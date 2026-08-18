@@ -6,15 +6,118 @@ import {
 }
 
 // Values
+pub fn bdst_capacity(Double, Double, Double, Double) -> Double
+
+pub fn bdst_time(Double, Double, Double, Double, Double) -> Double
+
+pub fn bed_mass(Double, Double) -> Double
+
+pub fn bed_volume(Double, Double) -> Double
+
+pub fn breakthrough_area(Array[BreakthroughPoint]) -> Double
+
+pub fn breakthrough_time(Array[BreakthroughPoint], Double) -> Double
+
+pub fn breakthrough_width(Array[BreakthroughPoint], Double, Double) -> Double
+
 pub fn calculate_thomas_breakthrough(Double, Double, Double, Double, Double, Double) -> Double
+
+pub fn clark_ratio(Double, Double, Double, Double) -> Double
+
+pub fn clark_time(Double, Double, Double, Double) -> Double
+
+pub fn concentration_pulse(Double, Double, Double, Double) -> Double
+
+pub fn courant_number(Double, Double, Double) -> Double
+
+pub fn damkohler_number(Double, Double, Double) -> Double
+
+pub fn discretization_step(Double, Int) -> Double
+
+pub fn empty_bed_contact_time(Double, Double, Double) -> Double
 
 pub fn estimate_thomas_time(Double, Double, Double, Double, Double, Double) -> Double
 
+pub fn flow_for_ebct(Double, Double, Double) -> Double
+
+pub fn gaussian_pulse(Double, Double, Double, Double) -> Double
+
+pub fn hydraulic_residence_time(Double, Double) -> Double
+
+pub fn ideal_plug_flow(Double, Double, Double) -> Double
+
+pub fn interpolate_time(Array[BreakthroughPoint], Double) -> Double
+
+pub fn mass_balance_capacity(Double, Double, Double, Double, Double) -> Double
+
+pub fn mass_transfer_zone_length(Double, Double, Double, Double) -> Double
+
+pub fn monotonic_breakthrough(Array[BreakthroughPoint]) -> Bool
+
+pub fn normalized_curve(Array[BreakthroughPoint], Double) -> Array[BreakthroughPoint]
+
+pub fn peclet_number(Double, Double, Double) -> Double
+
+pub fn porosity_from_density(Double, Double) -> Double
+
+pub fn pressure_drop_ergun(Double, Double, Double, Double, Double) -> Double
+
+pub fn pulse_integral(Double, Double, Double) -> Double
+
+pub fn ramp_feed(Double, Double, Double, Double) -> Double
+
+pub fn ratio_at(BreakthroughPoint) -> Double
+
+pub fn removal_area(Array[BreakthroughPoint]) -> Double
+
+pub fn residence_distribution(Double, Double, Double) -> Double
+
+pub fn residence_mean(Array[Double], Array[Double]) -> Double
+
+pub fn residence_variance(Array[Double], Array[Double]) -> Double
+
+pub fn reynolds_particle(Double, Double, Double, Double) -> Double
+
+pub fn safety_factor(Double, Double) -> Double
+
+pub fn service_time(Double, Double, Double, Double) -> Double
+
 pub fn simulate_column(ColumnSimulationConfig, (Double) -> Double, (Double) -> Double) -> ColumnSimulationResult
+
+pub fn square_wave(Double, Double, Double, Double) -> Double
+
+pub fn stable_upwind_time_step(Double, Double, Double) -> Double
+
+pub fn summarize_breakthrough(Array[BreakthroughPoint], Double, Double) -> BreakthroughMetrics
+
+pub fn superficial_velocity(Double, Double) -> Double
+
+pub fn thomas_ratio(ThomasParams, Double) -> Double
+
+pub fn yoon_nelson_ratio(Double, Double, Double) -> Double
+
+pub fn yoon_nelson_time(Double, Double, Double) -> Double
 
 // Errors
 
 // Types and methods
+pub(all) struct BdSTransform {
+  capacity : Double
+  rate : Double
+  intercept : Double
+} derive(Eq, @debug.Debug)
+
+pub(all) struct BreakthroughMetrics {
+  c0 : Double
+  c5_time : Double
+  c10_time : Double
+  c50_time : Double
+  c90_time : Double
+  area : Double
+  treated_volume : Double
+  removal_capacity : Double
+} derive(Eq, @debug.Debug)
+
 pub(all) struct BreakthroughPoint {
   time : Double
   outlet_concentration : Double
@@ -46,7 +149,14 @@ pub(all) struct FixedBedParams {
   initial_concentration : Double
 } derive(Eq, @debug.Debug)
 
+pub(all) struct ThomasParams {
+  k_th : Double
+  q0 : Double
+  mass : Double
+  flow : Double
+  c0 : Double
+} derive(Eq, @debug.Debug)
+
 // Type aliases
 
 // Traits
-

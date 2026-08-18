@@ -1,33 +1,58 @@
-name: test
+name: moonbit-ci
 
 on:
   push:
-    branches:
-      - main
+    branches: [master, main]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
-  build:
+  check:
+    name: MoonBit check (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
     strategy:
+      fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-    runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: install
+      - name: Setup MoonBit stable
         uses: moonbitlang/setup-moonbit@v1.2.0
         with:
-          version: '0.10.3'
+          version: latest
 
-      - name: check
-        run: moon check
+      - name: Format check
+        run: moon fmt --check
 
-      - name: test
-        run: moon test
+      - name: Check all targets
+        run: moon check --target all --deny-warn
 
-      - name: fmt
-        run: moon fmt -- --deny-warn
+      - name: Test all targets
+        run: moon test --target all --deny-warn
 
-      - name: info
-        run: moon info -- --deny-warn
+      - name: Native regression test
+        run: moon test --target native --deny-warn
+
+      - name: Public API stability
+        shell: bash
+        run: |
+          moon info
+          git diff --exit-code -- pkg.generated.mbti
+
+  benchmark:
+    name: Reproducible benchmark
+    runs-on: ubuntu-latest
+    needs: check
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup MoonBit stable
+        uses: moonbitlang/setup-moonbit@v1.2.0
+        with:
+          version: latest
+      - name: Run benchmark example
+        run: moon run --target native benchmarks
