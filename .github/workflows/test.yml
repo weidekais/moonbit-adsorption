@@ -20,10 +20,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup MoonBit stable
-        uses: moonbitlang/setup-moonbit@v1.2.0
-        with:
-          version: latest
+      - name: Setup MoonBit stable (Unix)
+        if: runner.os != 'Windows'
+        shell: bash
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
+
+      - name: Setup MoonBit stable (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          Set-ExecutionPolicy RemoteSigned -Scope CurrentUser
+          irm https://cli.moonbitlang.com/install/powershell.ps1 | iex
+          echo "$HOME/.moon/bin" | Out-File -FilePath $env:GITHUB_PATH -Append
 
       - name: Format check
         run: moon fmt --check
@@ -50,9 +60,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Setup MoonBit stable
-        uses: moonbitlang/setup-moonbit@v1.2.0
-        with:
-          version: latest
+      - name: Setup MoonBit stable (Unix)
+        shell: bash
+        run: |
+          curl -fsSL https://cli.moonbitlang.com/install/unix.sh | bash
+          echo "$HOME/.moon/bin" >> "$GITHUB_PATH"
       - name: Run benchmark example
         run: moon run --target native benchmarks
