@@ -7,6 +7,50 @@ import {
 }
 
 // Values
+pub fn batch_equilibrium(Array[Double], Double, Double, (Int, Double, Array[Double]) -> Double, Double, Int) -> BatchEquilibrium
+
+pub fn batch_loading_fraction(BatchEquilibrium, Array[Double]) -> Array[Double]
+
+pub fn batch_single_component(Double, Double, Double, (Double) -> Double, Double) -> BatchEquilibrium
+
+pub fn bootstrap_capacity(Array[AdsorptionData], (Array[Double], Double) -> Double, Array[Double], Int) -> BootstrapSummary
+
+pub fn bootstrap_summary(Array[Double], Int, Int) -> BootstrapSummary
+
+pub fn compare_model_scores(Array[ModelScore]) -> ModelScore
+
+pub fn competitive_langmuir_loading(Array[MixtureComponent]) -> MixtureLoading
+
+pub fn competitive_sips_loading(Array[MixtureComponent]) -> MixtureLoading
+
+pub fn confidence_half_width(BootstrapSummary, Double) -> Double
+
+pub fn deterministic_resample(Array[Double], Int, Int) -> Array[Double]
+
+pub fn diagnostic_aic(FitDiagnostics, Int) -> Double
+
+pub fn diagnostic_bic(FitDiagnostics, Int) -> Double
+
+pub fn diagnostic_cooks_distance(FitDiagnostics, Array[Double], Int) -> Array[Double]
+
+pub fn diagnostic_fit(Array[Double], Array[Double], Array[Double]) -> FitDiagnostics
+
+pub fn diagnostic_leverage(Array[Double], Double) -> Array[Double]
+
+pub fn diagnostic_outliers(FitDiagnostics, Double) -> Array[ResidualRecord]
+
+pub fn diagnostic_prediction_interval(FitDiagnostics, Double) -> (Double, Double)
+
+pub fn diagnostic_relative_values(FitDiagnostics) -> Array[Double]
+
+pub fn diagnostic_residual_values(FitDiagnostics) -> Array[Double]
+
+pub fn diagnostic_residuals(Array[Double], Array[Double], Array[Double]) -> Array[ResidualRecord]
+
+pub fn diagnostic_standardized_values(FitDiagnostics) -> Array[Double]
+
+pub fn entropy_from_partition(Double, Double) -> Double
+
 pub fn fit_bet(Array[AdsorptionData]) -> BetParams
 
 pub fn fit_dubinin_radushkevich(Array[AdsorptionData], Double) -> DubininRadushkevichParams
@@ -26,6 +70,8 @@ pub fn fit_pseudo_second_order(Array[KineticData]) -> PseudoSecondOrderParams
 pub fn fit_redlich_peterson(Array[AdsorptionData]) -> RedlichPetersonParams
 
 pub fn fit_sips(Array[AdsorptionData]) -> SipsParams
+
+pub fn fit_stability_score(Array[ModelScore], BootstrapSummary) -> Double
 
 pub fn fit_temkin(Array[AdsorptionData]) -> TemkinParams
 
@@ -47,11 +93,15 @@ pub fn freundlich_finite_sensitivity(FreundlichParams, Double, Double) -> @utils
 
 pub fn freundlich_is_monotone(FreundlichParams, Double, Double, Int) -> Bool
 
+pub fn gibbs_free_energy(Double, Double, Double) -> Double
+
 pub fn half_time_pseudo_first_order(PseudoFirstOrderParams) -> Double
 
 pub fn half_time_pseudo_second_order(PseudoSecondOrderParams) -> Double
 
 pub fn initial_rate_pseudo_second_order(PseudoSecondOrderParams) -> Double
+
+pub fn isosteric_heat(ThermodynamicPoint, ThermodynamicPoint) -> Double
 
 pub fn kinetic_conversion(Array[KineticData], Double, Double) -> Array[Double]
 
@@ -71,19 +121,35 @@ pub fn langmuir_finite_sensitivity(LangmuirParams, Double, Double) -> @utils.Sen
 
 pub fn langmuir_is_monotone(LangmuirParams, Double, Double, Int) -> Bool
 
+pub fn mixture_component(String, Double, Double, Double, Double) -> MixtureComponent
+
+pub fn mixture_normalized_loadings(MixtureLoading) -> Array[Double]
+
+pub fn mixture_selectivity(MixtureLoading, Int, Int) -> Double
+
 pub fn model_aic(Array[Double], Array[Double], Int) -> Double
 
 pub fn model_bic(Array[Double], Array[Double], Int) -> Double
+
+pub fn model_is_adequate(FitDiagnostics, Double, Double) -> Bool
 
 pub fn model_mae(Array[Double], Array[Double]) -> Double
 
 pub fn model_rmse(Array[Double], Array[Double]) -> Double
 
+pub fn model_score(String, Int, Array[Double], Array[Double], Array[Double]) -> ModelScore
+
+pub fn model_score_ranking(Array[ModelScore]) -> Array[Int]
+
 pub fn predict_bet(BetParams, Double) -> Double
+
+pub fn predict_dual_site(Double, Double, Double, Double, Double) -> Double
 
 pub fn predict_dubinin_radushkevich(DubininRadushkevichParams, Double, Double) -> Double
 
 pub fn predict_elovich(ElovichParams, Double) -> Double
+
+pub fn predict_fowler_guggenheim(Double, Double, Double, Double, Int) -> Double
 
 pub fn predict_freundlich(FreundlichParams, Double) -> Double
 
@@ -91,9 +157,17 @@ pub fn predict_halsey(HalseyParams, Double) -> Double
 
 pub fn predict_harkin_jura(HarkinJuraParams, Double) -> Double
 
+pub fn predict_henry(Double, Double) -> Double
+
+pub fn predict_henry_partition(Double, Double, Double, Double) -> Double
+
+pub fn predict_hill(Double, Double, Double, Double) -> Double
+
 pub fn predict_intraparticle(IntraparticleParams, Double) -> Double
 
 pub fn predict_langmuir(LangmuirParams, Double) -> Double
+
+pub fn predict_langmuir_freundlich(Double, Double, Double, Double) -> Double
 
 pub fn predict_pseudo_first_order(PseudoFirstOrderParams, Double) -> Double
 
@@ -101,11 +175,15 @@ pub fn predict_pseudo_second_order(PseudoSecondOrderParams, Double) -> Double
 
 pub fn predict_redlich_peterson(RedlichPetersonParams, Double) -> Double
 
+pub fn predict_redlich_peterson_extended(Double, Double, Double, Double) -> Double
+
 pub fn predict_sips(SipsParams, Double) -> Double
 
 pub fn predict_temkin(TemkinParams, Double) -> Double
 
 pub fn predict_toth(TothParams, Double) -> Double
+
+pub fn residual_normality_proxy(FitDiagnostics) -> Double
 
 pub fn sips_capacity_average(SipsParams, Array[Double]) -> Double
 
@@ -139,6 +217,12 @@ pub fn temkin_finite_sensitivity(TemkinParams, Double, Double) -> @utils.Sensiti
 
 pub fn temkin_is_monotone(TemkinParams, Double, Double, Int) -> Bool
 
+pub fn temperature_corrected_affinity(Double, Double, Double, Double) -> Double
+
+pub fn temperature_corrected_capacity(Double, Double, Double, Double) -> Double
+
+pub fn thermodynamic_point(Double, Double, Double) -> ThermodynamicPoint
+
 pub fn toth_capacity_average(TothParams, Array[Double]) -> Double
 
 pub fn toth_capacity_integral(TothParams, Double, Double, Int) -> Double
@@ -155,6 +239,8 @@ pub fn toth_finite_sensitivity(TothParams, Double, Double) -> @utils.Sensitivity
 
 pub fn toth_is_monotone(TothParams, Double, Double, Int) -> Bool
 
+pub fn van_t_hoff_slope(Array[ThermodynamicPoint]) -> ThermodynamicFit
+
 // Errors
 
 // Types and methods
@@ -163,11 +249,30 @@ pub(all) struct AdsorptionData {
   q : Double
 } derive(Eq, @debug.Debug)
 
+pub struct BatchEquilibrium {
+  initial_concentrations : Array[Double]
+  final_concentrations : Array[Double]
+  loadings : Array[Double]
+  removed_mass : Array[Double]
+  closure_error : Double
+  converged : Bool
+  iterations : Int
+}
+
 pub(all) struct BetParams {
   q_m : Double
   c_b : Double
   r_squared : Double
 } derive(Eq, @debug.Debug)
+
+pub struct BootstrapSummary {
+  mean : Double
+  standard_deviation : Double
+  lower : Double
+  median : Double
+  upper : Double
+  samples : Array[Double]
+}
 
 pub(all) struct DubininRadushkevichParams {
   q_s : Double
@@ -180,6 +285,17 @@ pub(all) struct ElovichParams {
   beta : Double
   r_squared : Double
 } derive(Eq, @debug.Debug)
+
+pub struct FitDiagnostics {
+  records : Array[ResidualRecord]
+  rmse : Double
+  mae : Double
+  bias : Double
+  r_squared : Double
+  max_absolute_error : Double
+  residual_standard_deviation : Double
+  durbin_watson : Double
+}
 
 pub(all) struct FreundlichParams {
   k_f : Double
@@ -216,6 +332,31 @@ pub(all) struct LangmuirParams {
   r_squared : Double
 } derive(Eq, @debug.Debug)
 
+pub struct MixtureComponent {
+  name : String
+  concentration : Double
+  capacity : Double
+  affinity : Double
+  exponent : Double
+}
+
+pub struct MixtureLoading {
+  loadings : Array[Double]
+  total_loading : Double
+  selectivities : Array[Double]
+  saturation_fraction : Double
+}
+
+pub struct ModelScore {
+  name : String
+  parameters : Int
+  observations : Int
+  rmse : Double
+  aic : Double
+  bic : Double
+  score : Double
+}
+
 pub(all) struct PseudoFirstOrderParams {
   q_e : Double
   k_1 : Double
@@ -235,6 +376,16 @@ pub(all) struct RedlichPetersonParams {
   r_squared : Double
 } derive(Eq, @debug.Debug)
 
+pub struct ResidualRecord {
+  index : Int
+  concentration : Double
+  observed : Double
+  predicted : Double
+  residual : Double
+  standardized : Double
+  relative : Double
+}
+
 pub(all) struct SipsParams {
   q_m : Double
   k_s : Double
@@ -247,6 +398,20 @@ pub(all) struct TemkinParams {
   b : Double
   r_squared : Double
 } derive(Eq, @debug.Debug)
+
+pub struct ThermodynamicFit {
+  reference_capacity : Double
+  enthalpy : Double
+  entropy : Double
+  gibbs_energy : Double
+  r_squared : Double
+}
+
+pub struct ThermodynamicPoint {
+  temperature : Double
+  capacity : Double
+  pressure : Double
+}
 
 pub(all) struct TothParams {
   q_m : Double

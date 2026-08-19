@@ -10,33 +10,129 @@ pub fn aic(Double, Int, Int) -> Double
 
 pub fn all_nonnegative(Array[Double]) -> Bool
 
+pub fn alternating_rule_violations(Array[Double], Int) -> Int
+
 pub fn argmax(Array[Double]) -> Int
 
 pub fn argmin(Array[Double]) -> Int
 
+pub fn bar(Double) -> Quantity
+
+pub fn barycentric_interpolate(Double, Array[Double], Array[Double], Array[Double]) -> Double
+
+pub fn barycentric_weights(Array[Double]) -> Array[Double]
+
+pub fn batch_consistency_score(Array[Array[Double]], Double) -> Double
+
+pub fn best_design(Array[DesignPoint]) -> DesignPoint
+
 pub fn bic(Double, Int, Int) -> Double
+
+pub fn bisection((Double) -> Double, Double, Double, Double, Int) -> RootResult
+
+pub fn block_means(Array[Double], Int) -> Array[Double]
+
+pub fn block_standard_deviations(Array[Double], Int) -> Array[Double]
 
 pub fn bootstrap_mean(Array[Array[Double]]) -> ConfidenceInterval
 
+pub fn bounded_golden_search((Double) -> Double, Double, Double, Double, Int) -> RootResult
+
+pub fn bounded_parameters(Array[Double], Array[ParameterBound]) -> Array[Double]
+
+pub fn bracket_expand((Double) -> Double, Double, Double, Double, Int) -> Bracket
+
+pub fn bracket_midpoint(Bracket) -> Double
+
+pub fn bracket_width(Bracket) -> Double
+
+pub fn capability_passes(CapabilitySummary, Double) -> Bool
+
+pub fn capability_summary(Array[Double], Double, Double) -> CapabilitySummary
+
+pub fn celsius(Double) -> Quantity
+
 pub fn center_points(ExperimentPlan) -> Array[Double]
+
+pub fn cholesky_factor(Matrix, Double) -> CholeskySystem
+
+pub fn cholesky_solve(CholeskySystem, Array[Double]) -> Array[Double]
 
 pub fn choose_best_model(Array[Double]) -> Int
 
 pub fn clamp(Double, Double, Double) -> Double
 
+pub fn concentration_dimension() -> Dimension
+
+pub fn constraint_check(Array[Double], Array[Double], Array[Double], Double) -> ConstraintResult
+
+pub fn control_acceptance_fraction(Array[Double], ControlLimits) -> Double
+
+pub fn control_chart_score(Array[Double], Double) -> Double
+
+pub fn control_decisions(Array[Double], ControlLimits) -> Array[ControlDecision]
+
+pub fn control_limits(Array[Double], Double) -> ControlLimits
+
+pub fn control_out_of_limits(Array[Double], ControlLimits) -> Array[ControlDecision]
+
+pub fn control_warning_count(Array[Double], ControlLimits) -> Int
+
 pub fn convolution(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn coordinate_descent((Array[Double]) -> Double, Array[Double], Array[ParameterBound], Double, Double, Int) -> OptimizationSolution
 
 pub fn correlation(Array[Double], Array[Double]) -> Double
 
 pub fn covariance(Array[Double], Array[Double]) -> Double
 
+pub fn covariance_from_residuals(Matrix, Array[Double], Double) -> Matrix
+
+pub fn crossing_locations(Array[Double], Array[Double], Double) -> Array[Double]
+
+pub fn cubic_meters(Double) -> Quantity
+
 pub fn cumulative_trapezoid(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn denormalized_parameters(Array[Double], Array[ParameterBound]) -> Array[Double]
+
+pub fn derivative_backward((Double) -> Double, Double, Double) -> Double
+
+pub fn derivative_central((Double) -> Double, Double, Double) -> Double
+
+pub fn derivative_forward((Double) -> Double, Double, Double) -> Double
+
+pub fn design_grid(Array[ParameterBound], Int) -> Array[DesignPoint]
 
 pub fn determinant_2x2(Matrix) -> Double
 
+pub fn dimensionless() -> Dimension
+
+pub fn divided_differences(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn drift_report(Array[Double], Array[Double], Double) -> DriftReport
+
 pub fn elasticity((Double) -> Double, Double, Double) -> Double
 
+pub fn empty_bed_contact_time(Quantity, Quantity, String) -> Quantity
+
+pub fn enforce_monotone(Array[Double], Bool) -> Array[Double]
+
+pub fn event_found(OdeTrajectory) -> Bool
+
+pub fn event_time(OdeTrajectory) -> Double
+
 pub fn exponential_smoothing(Array[Double], Double) -> Array[Double]
+
+pub fn extremum_is_maximum((Double) -> Double, Double, Double) -> Bool
+
+pub fn extremum_is_minimum((Double) -> Double, Double, Double) -> Bool
+
+pub fn fahrenheit(Double) -> Quantity
+
+pub fn finite_difference_gradient((Array[Double]) -> Double, Array[Double], Array[Double]) -> Array[Double]
+
+pub fn finite_difference_hessian_diagonal((Array[Double]) -> Double, Array[Double], Array[Double]) -> Array[Double]
 
 pub fn finite_difference_sensitivity((Double) -> Double, Double, Double) -> SensitivityPoint
 
@@ -44,7 +140,69 @@ pub fn finite_or_zero(Double) -> Double
 
 pub fn first_difference(Array[Double]) -> Array[Double]
 
+pub fn fit_least_squares((Array[Double], Double) -> Double, Array[Double], Array[Double], Array[Double], Array[Double], Array[ParameterBound], Int) -> OptimizationSolution
+
+pub fn fit_natural_cubic_spline(Array[Double], Array[Double], Bool) -> SplineModel
+
+pub fn fit_weighted_linear(Array[Double], Array[Double], Array[Double]) -> LeastSquaresResult
+
+pub fn fixed_point((Double) -> Double, Double, Double, Int) -> RootResult
+
+pub fn flow_from_volume_time(Quantity, Quantity, String) -> Quantity
+
 pub fn full_factorial(String, Array[String], Array[Double], Array[Double], Int, Int) -> ExperimentPlan
+
+pub fn gram_schmidt(Matrix, Double) -> (Matrix, Matrix, Int)
+
+pub fn grams(Double) -> Quantity
+
+pub fn grubbs_scores(Array[Double]) -> Array[Double]
+
+pub fn hours(Double) -> Quantity
+
+pub fn integrate_adaptive((Double) -> Double, Double, Double, Double, Int) -> Double
+
+pub fn integrate_midpoint((Double) -> Double, Double, Double, Int) -> Double
+
+pub fn integrate_simpson((Double) -> Double, Double, Double, Int) -> Double
+
+pub fn interpolate_log_log(Double, Array[Double], Array[Double]) -> Double
+
+pub fn interpolate_log_x(Double, Array[Double], Array[Double]) -> Double
+
+pub fn interpolate_log_y(Double, Array[Double], Array[Double]) -> Double
+
+pub fn interpolate_root(Double, Double, Double, Double, Double) -> Double
+
+pub fn interpolation_integral(Array[Double], Array[Double]) -> Double
+
+pub fn interpolation_interval(Double, Array[Double]) -> InterpolationInterval
+
+pub fn interpolation_interval_slope(Double, Array[Double], Array[Double]) -> Double
+
+pub fn interpolation_interval_value(Double, Array[Double], Array[Double]) -> Double
+
+pub fn interpolation_report(Double, Array[Double], Array[Double]) -> InterpolationReport
+
+pub fn interpolation_sample(Double, Double) -> InterpolationSample
+
+pub fn interpolation_weighted_mean(Array[Double], Array[Double]) -> Double
+
+pub fn jacobi_eigenpair(Matrix, Int, Double) -> EigenPair
+
+pub fn jacobian_from_model((Array[Double], Double) -> Double, Array[Double], Array[Double], Array[Double]) -> Matrix
+
+pub fn kelvin(Double) -> Quantity
+
+pub fn kilograms(Double) -> Quantity
+
+pub fn kilopascals(Double) -> Quantity
+
+pub fn lagrange_interpolate(Double, Array[Double], Array[Double]) -> Double
+
+pub fn least_squares_qr(Matrix, Array[Double], Double) -> LeastSquaresResult
+
+pub fn length_dimension() -> Dimension
 
 pub fn linear_interpolate(Double, Array[Double], Array[Double]) -> Double
 
@@ -52,7 +210,27 @@ pub fn linear_regression(Array[Point]) -> LinearRegressionResult
 
 pub fn linspace(Double, Double, Int) -> Array[Double]
 
+pub fn liters(Double) -> Quantity
+
+pub fn local_maximum((Double) -> Double, Double, Double, Int) -> ExtremumResult
+
+pub fn local_minimum((Double) -> Double, Double, Double, Int) -> ExtremumResult
+
+pub fn local_sensitivity((Array[Double], Double) -> Double, Array[Double], Double, Array[Double]) -> Array[Double]
+
+pub fn lu_factor(Matrix, Double) -> PivotedSystem
+
+pub fn lu_solve(PivotedSystem, Array[Double]) -> Array[Double]
+
 pub fn mae(Array[Double], Array[Double]) -> Double
+
+pub fn make_bracket((Double) -> Double, Double, Double) -> Bracket
+
+pub fn mass_concentration(Double, String) -> Quantity
+
+pub fn mass_dimension() -> Dimension
+
+pub fn mass_rate(Quantity, Quantity, String) -> Quantity
 
 pub fn matrix(Int, Int, Array[Double]) -> Matrix
 
@@ -60,17 +238,47 @@ pub fn matrix_add(Matrix, Matrix) -> Matrix
 
 pub fn matrix_column(Matrix, Int) -> Array[Double]
 
+pub fn matrix_condition_estimate(Matrix, Double) -> Double
+
 pub fn matrix_condition_proxy(Matrix) -> Double
 
+pub fn matrix_determinant(Matrix, Double) -> Double
+
+pub fn matrix_diagonal(Matrix) -> Array[Double]
+
+pub fn matrix_diagonal_shift(Matrix, Double) -> Matrix
+
 pub fn matrix_frobenius(Matrix) -> Double
+
+pub fn matrix_from_columns(Array[Array[Double]]) -> Matrix
+
+pub fn matrix_from_rows(Array[Array[Double]]) -> Matrix
 
 pub fn matrix_get(Matrix, Int, Int) -> Double
 
 pub fn matrix_identity(Int) -> Matrix
 
+pub fn matrix_inverse(Matrix, Double) -> Matrix
+
+pub fn matrix_is_square(Matrix) -> Bool
+
 pub fn matrix_is_symmetric(Matrix, Double) -> Bool
 
+pub fn matrix_max_abs(Matrix) -> Double
+
 pub fn matrix_multiply(Matrix, Matrix) -> Matrix
+
+pub fn matrix_one_norm(Matrix) -> Double
+
+pub fn matrix_outer(Array[Double], Array[Double]) -> Matrix
+
+pub fn matrix_power(Matrix, Int) -> Matrix
+
+pub fn matrix_project(Array[Double], Array[Array[Double]]) -> Array[Double]
+
+pub fn matrix_regularize(Matrix, Double) -> Matrix
+
+pub fn matrix_replace_diagonal(Matrix, Array[Double]) -> Matrix
 
 pub fn matrix_row(Matrix, Int) -> Array[Double]
 
@@ -80,6 +288,8 @@ pub fn matrix_set(Matrix, Int, Int, Double) -> Matrix
 
 pub fn matrix_subtract(Matrix, Matrix) -> Matrix
 
+pub fn matrix_symmetrize(Matrix) -> Matrix
+
 pub fn matrix_trace(Matrix) -> Double
 
 pub fn matrix_transpose(Matrix) -> Matrix
@@ -88,13 +298,41 @@ pub fn matrix_vector(Matrix, Array[Double]) -> Array[Double]
 
 pub fn matrix_zero(Int, Int) -> Matrix
 
+pub fn maximize_bounded_scalar((Double) -> Double, Double, Double, Double, Int) -> RootResult
+
+pub fn maximize_golden((Double) -> Double, Double, Double, Double, Int) -> ExtremumResult
+
 pub fn mean(Array[Double]) -> Double
+
+pub fn median_absolute_score(Array[Double]) -> Array[Double]
+
+pub fn milligrams(Double) -> Quantity
+
+pub fn milliliters(Double) -> Quantity
+
+pub fn minimize_golden((Double) -> Double, Double, Double, Double, Int) -> ExtremumResult
+
+pub fn minutes(Double) -> Quantity
+
+pub fn monotone_cubic_interpolate(Double, Array[Double], Array[Double]) -> Double
+
+pub fn monotone_slopes(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn monotonicity_violations(Array[Double], Bool) -> Int
 
 pub fn moving_average(Array[Double], Int) -> Array[Double]
 
 pub fn mse(Array[Double], Array[Double]) -> Double
 
+pub fn nearest_sample(Double, Array[Double], Array[Double]) -> Double
+
 pub fn nelder_mead((Array[Double]) -> Double, Array[Double], Double, Int) -> Array[Double]
+
+pub fn newton((Double) -> Double, (Double) -> Double, Double, Double, Int) -> RootResult
+
+pub fn newton_extremum((Double) -> Double, Double, Double, Double, Int) -> ExtremumResult
+
+pub fn newton_interpolate(Double, Array[Double], Array[Double]) -> Double
 
 pub fn normal_equations(Array[Point]) -> Matrix
 
@@ -102,7 +340,81 @@ pub fn normal_interval(Array[Double], Double, Double) -> ConfidenceInterval
 
 pub fn normal_rhs(Array[Point]) -> Array[Double]
 
+pub fn normalize_root_interval(Double, Double) -> Array[Double]
+
 pub fn normalized(Array[Double]) -> Array[Double]
+
+pub fn normalized_parameters(Array[Double], Array[ParameterBound]) -> Array[Double]
+
+pub fn objective_huber(Array[Double], Double) -> Double
+
+pub fn objective_mae(Array[Double]) -> Double
+
+pub fn objective_rms(Array[Double]) -> Double
+
+pub fn observation(Double, Double, Double, Bool) -> Observation
+
+pub fn observation_table(Array[Double], Array[Double]) -> ObservationTable
+
+pub fn ode_competing_decay(Array[Double]) -> (Double, Array[Double]) -> Array[Double]
+
+pub fn ode_config(Double, Double, Double, Double, Double, Int) -> OdeConfig
+
+pub fn ode_default_config() -> OdeConfig
+
+pub fn ode_error_estimate(OdeState, OdeState) -> Double
+
+pub fn ode_euler_step((Double, Array[Double]) -> Array[Double], OdeState, Double) -> OdeState
+
+pub fn ode_first_order_relaxation(Double, Double) -> (Double, Array[Double]) -> Array[Double]
+
+pub fn ode_heun_step((Double, Array[Double]) -> Array[Double], OdeState, Double) -> OdeState
+
+pub fn ode_integrate_adaptive((Double, Array[Double]) -> Array[Double], OdeState, Double, OdeConfig) -> OdeTrajectory
+
+pub fn ode_integrate_fixed((Double, Array[Double]) -> Array[Double], OdeState, Double, Double) -> OdeTrajectory
+
+pub fn ode_integrate_with_event((Double, Array[Double]) -> Array[Double], OdeState, Double, OdeConfig, (Double, Array[Double]) -> Double, Bool) -> OdeTrajectory
+
+pub fn ode_linear_decay(Double) -> (Double, Array[Double]) -> Array[Double]
+
+pub fn ode_midpoint_step((Double, Array[Double]) -> Array[Double], OdeState, Double) -> OdeState
+
+pub fn ode_rhs_scale((Double, Array[Double]) -> Array[Double], Double) -> (Double, Array[Double]) -> Array[Double]
+
+pub fn ode_rhs_sum((Double, Array[Double]) -> Array[Double], (Double, Array[Double]) -> Array[Double]) -> (Double, Array[Double]) -> Array[Double]
+
+pub fn ode_rhs_with_input((Double, Array[Double]) -> Array[Double], (Double) -> Array[Double]) -> (Double, Array[Double]) -> Array[Double]
+
+pub fn ode_rk4_step((Double, Array[Double]) -> Array[Double], OdeState, Double) -> OdeState
+
+pub fn ode_scaled_error(OdeState, OdeState, OdeConfig) -> Double
+
+pub fn ode_state(Double, Array[Double]) -> OdeState
+
+pub fn ode_state_error(OdeState, OdeState) -> Double
+
+pub fn ode_step_consistency((Double, Array[Double]) -> Array[Double], OdeState, Double) -> Double
+
+pub fn ode_step_size(OdeConfig, Double, Double) -> Double
+
+pub fn optimization_converged(OptimizationSolution, Double) -> Bool
+
+pub fn optimization_improvement(OptimizationTrace) -> Double
+
+pub fn optimization_trace_best(OptimizationTrace) -> Int
+
+pub fn parameter_bound(Double, Double, Double, Bool) -> ParameterBound
+
+pub fn parameter_bound_default(Double, Double) -> ParameterBound
+
+pub fn pareto_front(Array[DesignPoint]) -> Array[DesignPoint]
+
+pub fn pascals(Double) -> Quantity
+
+pub fn pattern_search((Array[Double]) -> Double, Array[Double], Array[ParameterBound], Double, Double, Double, Int) -> OptimizationSolution
+
+pub fn penalized_objective((Array[Double]) -> Double, Array[Double], Array[Double], Array[Double], Double) -> Double
 
 pub fn percentile(Array[Double], Double) -> Double
 
@@ -112,41 +424,297 @@ pub fn polynomial_integral(Array[Double], Double, Double) -> Double
 
 pub fn polynomial_value(Array[Double], Double) -> Double
 
+pub fn pressure_dimension() -> Dimension
+
+pub fn process_moving_average(Array[Double], Int) -> Array[Double]
+
+pub fn process_moving_weighted_average(Array[Double], Array[Double], Int) -> Array[Double]
+
+pub fn process_rolling_rms(Array[Double], Int) -> Array[Double]
+
+pub fn quality_gate(Array[Double], Double, Double, Double, Double) -> Bool
+
+pub fn quality_has_fatal(QualityReport) -> Bool
+
+pub fn quality_score(QualityReport) -> Double
+
+pub fn quantity(Double, String, Double, Double) -> Quantity
+
+pub fn quantity_add(Quantity, Quantity) -> Quantity
+
+pub fn quantity_array_to_si(Array[Quantity]) -> Array[Double]
+
+pub fn quantity_convert(Quantity, Double, Double, String) -> Quantity
+
+pub fn quantity_dimensionless(Double, String) -> Quantity
+
+pub fn quantity_divide(Quantity, Quantity, String) -> Quantity
+
+pub fn quantity_from_si(Double, String, Double, Double) -> Quantity
+
+pub fn quantity_multiply(Quantity, Quantity, String) -> Quantity
+
+pub fn quantity_si_value(Quantity) -> Double
+
+pub fn quantity_subtract(Quantity, Quantity) -> Quantity
+
 pub fn r_squared(Array[Double], Array[Double]) -> Double
 
 pub fn rank(Array[Double]) -> Array[Int]
 
+pub fn regula_falsi((Double) -> Double, Double, Double, Double, Int) -> RootResult
+
 pub fn relative_error(Double, Double) -> Double
+
+pub fn remove_drift(Array[Double], Array[Double], DriftReport) -> Array[Double]
+
+pub fn repeatability_confidence(RepeatabilitySummary, Double) -> Double
+
+pub fn repeatability_summary(Array[Array[Double]]) -> RepeatabilitySummary
+
+pub fn resample_linear(Array[Double], Array[Double], Array[Double]) -> Array[Double]
+
+pub fn resample_monotone(Array[Double], Array[Double], Array[Double]) -> Array[Double]
+
+pub fn resample_spline(SplineModel, Array[Double]) -> Array[Double]
 
 pub fn resample_uniform(Array[Double], Array[Double], Int) -> Array[Point]
 
 pub fn residuals(Array[Double], Array[Double]) -> Array[Double]
 
+pub fn ridge_least_squares(Matrix, Array[Double], Double, Double) -> LeastSquaresResult
+
 pub fn rmse(Array[Double], Array[Double]) -> Double
+
+pub fn robust_control_limits(Array[Double], Double) -> ControlLimits
+
+pub fn robust_filter(Array[Double], Double) -> Array[Double]
+
+pub fn robust_replace_outliers(Array[Double], Double) -> Array[Double]
+
+pub fn root_distance(RootResult, RootResult) -> Double
+
+pub fn root_error_bound(RootResult, Double) -> Double
+
+pub fn root_quality(RootResult, Double) -> Double
+
+pub fn root_residual(RootResult) -> Double
+
+pub fn root_result_at((Double) -> Double, Double) -> RootResult
+
+pub fn root_scan_sign_changes(Array[RootScanPoint]) -> Int
+
+pub fn root_scan_values(Array[RootScanPoint]) -> Array[Double]
+
+pub fn root_success(RootResult, Double, Double) -> Bool
+
+pub fn roots_from_scan((Double) -> Double, Array[RootScanPoint], Double, Int) -> Array[RootResult]
+
+pub fn roots_unique(Array[RootResult], Double) -> Array[RootResult]
+
+pub fn run_length_above(Array[Double], Double) -> Array[Int]
+
+pub fn run_length_below(Array[Double], Double) -> Array[Int]
+
+pub fn safeguarded_newton((Double) -> Double, (Double) -> Double, Double, Double, Double, Int) -> RootResult
 
 pub fn sanitize_nonnegative(Array[Double]) -> Array[Double]
 
 pub fn scale_to_unit(Double, Double, Double) -> Double
 
+pub fn scan_roots((Double) -> Double, Double, Double, Int) -> Array[RootScanPoint]
+
+pub fn score_designs(Array[DesignPoint], (Array[Double]) -> Double, (Array[Double]) -> Bool) -> Array[DesignPoint]
+
+pub fn secant((Double) -> Double, Double, Double, Double, Int) -> RootResult
+
+pub fn second_derivative((Double) -> Double, Double, Double) -> Double
+
 pub fn second_difference(Array[Double]) -> Array[Double]
 
+pub fn seconds(Double) -> Quantity
+
 pub fn sensitivity_curve((Double) -> Double, Array[Double], Double) -> Array[SensitivityPoint]
+
+pub fn sequential_difference_test(Array[Double], Double) -> Bool
+
+pub fn signal_align_by_crossing(Array[Double], Array[Double], Double) -> Array[Double]
+
+pub fn signal_baseline_linear(Array[Double], Array[Double], Double, Double) -> BaselineModel
+
+pub fn signal_baseline_value(BaselineModel, Double) -> Double
+
+pub fn signal_breakthrough_metrics(Array[Double], Array[Double], Double, Double, Double, Double) -> ResponseMetrics
+
+pub fn signal_clamp(Array[Double], Double, Double) -> Array[Double]
+
+pub fn signal_crossing_time(Array[Double], Array[Double], Double) -> Double
+
+pub fn signal_detrend(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn signal_difference(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn signal_find_peaks(Array[Double], Array[Double], Double, Int) -> Array[SignalPeak]
+
+pub fn signal_find_valleys(Array[Double], Array[Double], Double, Int) -> Array[SignalPeak]
+
+pub fn signal_mad(Array[Double]) -> Double
+
+pub fn signal_mass_balance_error(Array[Double], Array[Double], Array[Double], Double) -> Double
+
+pub fn signal_mean(Array[Double]) -> Double
+
+pub fn signal_median(Array[Double]) -> Double
+
+pub fn signal_noise_level(Array[Double]) -> Double
+
+pub fn signal_normalize_response(Array[Double], Double, Double) -> Array[Double]
+
+pub fn signal_peak_area(Array[Double], Array[Double], SignalPeak) -> Double
+
+pub fn signal_peak_prominence(Array[Double], Int, Int) -> Double
+
+pub fn signal_peak_width(Array[Double], Int, Double) -> Double
+
+pub fn signal_quality_score(Array[Double], Array[Double]) -> Double
+
+pub fn signal_quantile(Array[Double], Double) -> Double
+
+pub fn signal_remove_baseline(Array[Double], Array[Double], BaselineModel) -> Array[Double]
+
+pub fn signal_resample(Array[Double], Array[Double], Array[Double], Bool) -> Array[Double]
+
+pub fn signal_residence_time(Array[Double], Array[Double]) -> Double
+
+pub fn signal_response_area(Array[Double], Array[Double], Double, Double) -> Double
+
+pub fn signal_response_time(Array[Double], Array[Double], Double) -> Double
+
+pub fn signal_second_difference(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn signal_smooth_boxcar(Array[Double], Int) -> Array[Double]
+
+pub fn signal_smooth_exponential(Array[Double], Double) -> Array[Double]
+
+pub fn signal_smooth_median(Array[Double], Int) -> Array[Double]
+
+pub fn signal_smooth_savgol(Array[Double], Int) -> Array[Double]
+
+pub fn signal_snr(Array[Double], Array[Double]) -> Double
+
+pub fn signal_standard_deviation(Array[Double]) -> Double
+
+pub fn signal_variance(Array[Double]) -> Double
+
+pub fn signal_windows(Array[Double], Array[Double], Int) -> Array[SignalWindow]
 
 pub fn simpson_area(Array[Double], Array[Double]) -> Double
 
 pub fn solve_2x2(Matrix, Array[Double]) -> Array[Double]
 
+pub fn solve_bracketed((Double) -> Double, Double, Double, Double, Int) -> RootResult
+
 pub fn solve_linear_fit(Array[Point]) -> LinearRegressionResult
 
+pub fn solve_linear_threshold(Double, Double, Double) -> RootResult
+
+pub fn solve_normal_equations(Matrix, Array[Double], Double) -> Array[Double]
+
+pub fn solve_tridiagonal(Array[Double], Array[Double], Array[Double], Array[Double]) -> Array[Double]
+
+pub fn spline_curvature(SplineModel, Double) -> Double
+
+pub fn spline_report(SplineModel, Double) -> InterpolationReport
+
+pub fn spline_slope(SplineModel, Double) -> Double
+
+pub fn spline_value(SplineModel, Double) -> Double
+
 pub fn standard_deviation(Array[Double]) -> Double
+
+pub fn standard_errors(Matrix) -> Array[Double]
+
+pub fn step_interpolate(Double, Array[Double], Array[Double]) -> Double
 
 pub fn strictly_increasing(Array[Double]) -> Bool
 
 pub fn summarize(Array[Double]) -> Summary
 
+pub fn superficial_velocity(Quantity, Quantity, String) -> Quantity
+
+pub fn table_append(ObservationTable, Observation) -> ObservationTable
+
+pub fn table_copy(ObservationTable) -> ObservationTable
+
+pub fn table_deduplicate_time(ObservationTable, Double) -> ObservationTable
+
+pub fn table_fill_linear(ObservationTable, Array[Double]) -> ObservationTable
+
+pub fn table_filter_range(ObservationTable, Double, Double) -> ObservationTable
+
+pub fn table_filter_valid(ObservationTable) -> ObservationTable
+
+pub fn table_get(ObservationTable, Int) -> Observation
+
+pub fn table_length(ObservationTable) -> Int
+
+pub fn table_mark_invalid(ObservationTable, Int) -> ObservationTable
+
+pub fn table_outlier_flags(ObservationTable, Double) -> Array[QualityFlag]
+
+pub fn table_quality(ObservationTable, Double, Double) -> QualityReport
+
+pub fn table_set_weight(ObservationTable, Int, Double) -> ObservationTable
+
+pub fn table_sort_by_time(ObservationTable) -> ObservationTable
+
+pub fn table_summary(ObservationTable) -> TableSummary
+
+pub fn table_times(ObservationTable, Bool) -> Array[Double]
+
+pub fn table_values(ObservationTable, Bool) -> Array[Double]
+
+pub fn table_weighted_mean(ObservationTable) -> Double
+
+pub fn table_weighted_variance(ObservationTable) -> Double
+
+pub fn table_z_scores(ObservationTable) -> Array[Double]
+
+pub fn time_dimension() -> Dimension
+
 pub fn to_csv(Array[Point], header? : String) -> String
 
+pub fn trajectory_component(OdeTrajectory, Int) -> Array[Double]
+
+pub fn trajectory_endpoint_error(OdeTrajectory, Array[Double]) -> Double
+
+pub fn trajectory_integral(OdeTrajectory, Int) -> Double
+
+pub fn trajectory_last(OdeTrajectory) -> OdeState
+
+pub fn trajectory_mass_balance(OdeTrajectory, Int, Int, Double) -> Double
+
+pub fn trajectory_maximum(OdeTrajectory, Int) -> Double
+
+pub fn trajectory_minimum(OdeTrajectory, Int) -> Double
+
+pub fn trajectory_monotonic(OdeTrajectory, Int, Bool) -> Bool
+
+pub fn trajectory_nonnegative(OdeTrajectory, Int) -> Bool
+
+pub fn trajectory_sample(OdeTrajectory, Double) -> OdeState
+
+pub fn trajectory_times(OdeTrajectory) -> Array[Double]
+
+pub fn trajectory_to_samples(OdeTrajectory, Int) -> Array[InterpolationSample]
+
 pub fn trapezoid_area(Array[Double], Array[Double]) -> Double
+
+pub fn trend_rule_violations(Array[Double], Int) -> Int
+
+pub fn trimmed_mean(Array[Double], Double) -> Double
+
+pub fn uncertainty_from_repeats(Array[Array[Double]], Double) -> Double
 
 pub fn unscale_from_unit(Double, Double, Double) -> Double
 
@@ -162,11 +730,62 @@ pub fn validate_range(Double, Double) -> Bool
 
 pub fn variance(Array[Double]) -> Double
 
+pub fn vector_add(Array[Double], Array[Double]) -> Array[Double]
+
+pub fn vector_axpy(Double, Array[Double], Array[Double]) -> Array[Double]
+
+pub fn vector_correlation(Array[Double], Array[Double]) -> Double
+
+pub fn vector_distance(Array[Double], Array[Double]) -> Double
+
+pub fn vector_dot(Array[Double], Array[Double]) -> Double
+
+pub fn vector_norm(Array[Double]) -> Double
+
+pub fn vector_normalize(Array[Double]) -> Array[Double]
+
+pub fn vector_remove_mean(Array[Double]) -> Array[Double]
+
+pub fn vector_scale(Array[Double], Double) -> Array[Double]
+
+pub fn vector_subtract(Array[Double], Array[Double]) -> Array[Double]
+
 pub fn weighted_rmse(Array[Double], Array[Double], Array[Double]) -> Double
+
+pub fn winsorize(Array[Double], Double, Double) -> Array[Double]
 
 // Errors
 
 // Types and methods
+pub struct BaselineModel {
+  coefficients : Array[Double]
+  lower_fraction : Double
+  upper_fraction : Double
+}
+
+pub(all) struct Bracket {
+  lower : Double
+  upper : Double
+  lower_value : Double
+  upper_value : Double
+  valid : Bool
+} derive(Eq, @debug.Debug)
+
+pub struct CapabilitySummary {
+  mean : Double
+  standard_deviation : Double
+  lower_specification : Double
+  upper_specification : Double
+  cp : Double
+  cpk : Double
+  pass_fraction : Double
+}
+
+pub struct CholeskySystem {
+  factor : Matrix
+  positive_definite : Bool
+}
+
 pub(all) struct ConfidenceInterval {
   estimate : Double
   lower : Double
@@ -174,12 +793,105 @@ pub(all) struct ConfidenceInterval {
   confidence : Double
 } derive(Eq, @debug.Debug)
 
+pub struct ConstraintResult {
+  feasible : Bool
+  penalty : Double
+  violations : Array[Double]
+}
+
+pub struct ControlDecision {
+  index : Int
+  value : Double
+  score : Double
+  code : Int
+  accepted : Bool
+}
+
+pub struct ControlLimits {
+  center : Double
+  upper : Double
+  lower : Double
+  warning_upper : Double
+  warning_lower : Double
+}
+
+pub struct CubicSplineSegment {
+  x0 : Double
+  x1 : Double
+  a : Double
+  b : Double
+  c : Double
+  d : Double
+}
+
+pub struct DesignPoint {
+  parameters : Array[Double]
+  score : Double
+  feasible : Bool
+}
+
+pub struct Dimension {
+  mass : Int
+  length : Int
+  time : Int
+  amount : Int
+  temperature : Int
+}
+
+pub struct DriftReport {
+  slope : Double
+  intercept : Double
+  r_squared : Double
+  drift_per_unit : Double
+  flagged : Bool
+}
+
+pub struct EigenPair {
+  value : Double
+  vector : Array[Double]
+  residual_norm : Double
+}
+
 pub(all) struct ExperimentPlan {
   name : String
   factors : Array[String]
   levels : Array[Array[Double]]
   replicates : Int
 } derive(Eq, @debug.Debug)
+
+pub(all) struct ExtremumResult {
+  point : Double
+  value : Double
+  iterations : Int
+  converged : Bool
+} derive(Eq, @debug.Debug)
+
+pub struct InterpolationInterval {
+  left : Int
+  right : Int
+  fraction : Double
+}
+
+pub struct InterpolationReport {
+  value : Double
+  slope : Double
+  curvature : Double
+  interval : Int
+  extrapolated : Bool
+}
+
+pub struct InterpolationSample {
+  x : Double
+  y : Double
+}
+
+pub struct LeastSquaresResult {
+  coefficients : Array[Double]
+  residuals : Array[Double]
+  residual_norm : Double
+  rank : Int
+  condition_estimate : Double
+}
 
 pub(all) struct LinearRegressionResult {
   slope : Double
@@ -193,9 +905,140 @@ pub(all) struct Matrix {
   values : Array[Double]
 } derive(Eq, @debug.Debug)
 
+pub struct Observation {
+  time : Double
+  value : Double
+  weight : Double
+  valid : Bool
+}
+
+pub struct ObservationTable {
+  times : Array[Double]
+  values : Array[Double]
+  weights : Array[Double]
+  valid : Array[Bool]
+}
+
+pub struct OdeConfig {
+  initial_step : Double
+  minimum_step : Double
+  maximum_step : Double
+  absolute_tolerance : Double
+  relative_tolerance : Double
+  maximum_steps : Int
+}
+
+pub struct OdeEvent {
+  time : Double
+  state : Array[Double]
+  value : Double
+  rising : Bool
+}
+
+pub struct OdeState {
+  time : Double
+  values : Array[Double]
+}
+
+pub struct OdeTrajectory {
+  states : Array[OdeState]
+  accepted_steps : Int
+  rejected_steps : Int
+  reached_end : Bool
+  event : OdeEvent?
+}
+
+pub struct OptimizationSolution {
+  parameters : Array[Double]
+  objective : Double
+  gradient_norm : Double
+  iterations : Int
+  converged : Bool
+  trace : OptimizationTrace
+}
+
+pub struct OptimizationTrace {
+  parameters : Array[Array[Double]]
+  objective : Array[Double]
+  iterations : Int
+  converged : Bool
+}
+
+pub struct ParameterBound {
+  lower : Double
+  upper : Double
+  scale : Double
+  fixed : Bool
+}
+
+pub struct PivotedSystem {
+  upper : Matrix
+  permutation : Array[Int]
+  pivot_sign : Int
+  singular : Bool
+}
+
 pub(all) struct Point {
   x : Double
   y : Double
+} derive(Eq, @debug.Debug)
+
+pub struct QualityFlag {
+  index : Int
+  code : Int
+  score : Double
+  message : String
+}
+
+pub struct QualityReport {
+  flags : Array[QualityFlag]
+  valid_count : Int
+  invalid_count : Int
+  outlier_count : Int
+  completeness : Double
+  weighted_mean : Double
+}
+
+pub struct Quantity {
+  value : Double
+  unit : String
+  scale : Double
+  offset : Double
+}
+
+pub struct RepeatabilitySummary {
+  groups : Int
+  observations : Int
+  grand_mean : Double
+  within_standard_deviation : Double
+  between_standard_deviation : Double
+  repeatability : Double
+  reproducibility : Double
+}
+
+pub struct ResponseMetrics {
+  t10 : Double
+  t50 : Double
+  t90 : Double
+  t_breakthrough : Double
+  area : Double
+  capacity : Double
+  removal : Double
+  tail_slope : Double
+}
+
+pub(all) struct RootResult {
+  root : Double
+  value : Double
+  iterations : Int
+  converged : Bool
+  bracketed : Bool
+} derive(Eq, @debug.Debug)
+
+pub(all) struct RootScanPoint {
+  x : Double
+  value : Double
+  sign_change : Bool
 } derive(Eq, @debug.Debug)
 
 pub(all) struct SensitivityPoint {
@@ -203,6 +1046,28 @@ pub(all) struct SensitivityPoint {
   output : Double
   local_sensitivity : Double
 } derive(Eq, @debug.Debug)
+
+pub struct SignalPeak {
+  index : Int
+  time : Double
+  value : Double
+  prominence : Double
+  width : Double
+  rising : Bool
+}
+
+pub struct SignalWindow {
+  start : Int
+  end : Int
+  mean : Double
+  standard_deviation : Double
+  slope : Double
+}
+
+pub struct SplineModel {
+  segments : Array[CubicSplineSegment]
+  extrapolate : Bool
+}
 
 pub(all) struct Summary {
   count : Int
@@ -213,6 +1078,17 @@ pub(all) struct Summary {
   standard_deviation : Double
   sum : Double
 } derive(Eq, @debug.Debug)
+
+pub struct TableSummary {
+  count : Int
+  valid_count : Int
+  missing_count : Int
+  mean : Double
+  standard_deviation : Double
+  minimum : Double
+  maximum : Double
+  integral : Double
+}
 
 pub(all) struct ValidationReport {
   valid : Bool

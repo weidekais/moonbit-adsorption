@@ -28,7 +28,11 @@ Thomas, Yoon–Nelson, Clark, and BDST equations; breakthrough interpolation; 5%
 
 ### Numerical utilities
 
-Nelder–Mead optimization, linear regression, error metrics, descriptive statistics, interpolation, smoothing, dense-matrix operations, experiment design, and sensitivity analysis.
+Nelder–Mead and bounded optimization, root finding, adaptive ODE integration, linear algebra and least squares, interpolation and cubic splines, process-unit conversion, observation-table quality control, signal analysis, experiment design, and sensitivity analysis.
+
+### Process analytics
+
+The production APIs also cover competitive multicomponent loading, temperature correction and thermodynamic summaries, batch mass balances, deterministic uncertainty summaries, control-chart rules, baseline removal, peak detection, response-time metrics, and column-cycle operating indicators.
 
 ## Quick start
 
@@ -75,11 +79,11 @@ The example fits equilibrium data, runs a fixed-bed simulation, and prints the r
 
 ```text
 utils/
-  optimization, regression, statistics, validation, matrix, series, experiment design
+  optimization, root finding, ODE, linear algebra, interpolation, units, tables, quality control, signal analysis
 isotherm/
-  equilibrium models, kinetic models, fitting, model comparison
+  equilibrium models, kinetic models, temperature and mixture models, fitting, diagnostics
 fixed_bed/
-  dynamic column simulation, breakthrough analysis, engineering design helpers
+  dynamic single- and multicomponent simulation, breakthrough analysis, cycle operations, design screening
 benchmarks/
   runnable native example and reproducible numerical workload
 ```
@@ -88,7 +92,7 @@ The package boundaries follow the computational flow: `utils` provides reusable 
 
 ## Benchmark
 
-The benchmark uses five Langmuir observations and a fixed-bed workload with 51 spatial grid points and 1,000 time steps. One local Windows native run produced:
+The benchmark uses five Langmuir observations and a fixed-bed workload with 51 spatial grid points and 1,000 time steps. The following values are from a local Windows native run of `moon run --target native benchmarks`:
 
 | Measurement | Result |
 | --- | ---: |
@@ -98,7 +102,9 @@ The benchmark uses five Langmuir observations and a fixed-bed workload with 51 s
 | simulation steps | 1,000 |
 | 50% breakthrough time | 9.99 |
 | removal-capacity metric | 199.1335926829373 |
-| end-to-end command time | 1,781.84 ms |
+| end-to-end command time, one run | 409.61 ms |
+
+Five repeated native runs measured from the shell were 388.82 ms, 451.05 ms, 556.53 ms, 405.85 ms, and 415.62 ms; median 415.62 ms, minimum 388.82 ms, maximum 556.53 ms. These timing values include the already-built local target and are environment-specific; the numerical outputs above are the portable reference values.
 
 Numerical outputs are the stable reference values. End-to-end time depends on the host, compiler cache, and first-build state.
 
@@ -130,4 +136,3 @@ GitHub Actions runs on Ubuntu, macOS, and Windows. The workflow installs the cur
 ## License
 
 Apache-2.0. See [LICENSE](LICENSE).
-

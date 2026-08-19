@@ -14,6 +14,8 @@ pub fn bed_mass(Double, Double) -> Double
 
 pub fn bed_volume(Double, Double) -> Double
 
+pub fn best_feasible_design(Array[DesignCandidate]) -> DesignCandidate
+
 pub fn breakthrough_area(Array[BreakthroughPoint]) -> Double
 
 pub fn breakthrough_time(Array[BreakthroughPoint], Double) -> Double
@@ -26,17 +28,57 @@ pub fn clark_ratio(Double, Double, Double, Double) -> Double
 
 pub fn clark_time(Double, Double, Double, Double) -> Double
 
+pub fn column_safety_margin(Double, Double) -> Double
+
+pub fn column_utilization(Double, Double) -> Double
+
+pub fn competitive_equilibrium(Array[Double], Array[Double]) -> (Int, Double, Array[Double]) -> Double
+
+pub fn component_feed(Array[Double]) -> (Int, Double) -> Double
+
 pub fn concentration_pulse(Double, Double, Double, Double) -> Double
 
 pub fn courant_number(Double, Double, Double) -> Double
 
+pub fn curve_quality(Array[BreakthroughPoint], Double) -> Double
+
+pub fn cycle_energy_demand(Array[RegenerationStep], Double, Double) -> Double
+
+pub fn cycle_from_curve(Array[BreakthroughPoint], Double, Double, Double, Double, Double) -> ColumnCycleResult
+
+pub fn cycle_productivity(ColumnCycleResult, Double) -> Double
+
+pub fn cycle_recovery(ColumnCycleResult, Array[RegenerationStep]) -> Double
+
+pub fn cycle_specific_energy(ColumnCycleResult, Double) -> Double
+
+pub fn cycle_total_regeneration_time(Array[RegenerationStep]) -> Double
+
+pub fn cycle_water_demand(Array[RegenerationStep]) -> Double
+
 pub fn damkohler_number(Double, Double, Double) -> Double
+
+pub fn design_candidate(Double, Double, Double, Double, Double, Double, Double, Double, Double) -> DesignCandidate
+
+pub fn design_pareto(Array[DesignCandidate]) -> Array[DesignCandidate]
+
+pub fn design_screen(Array[Double], Array[Double], Array[Double], Double, Double, Double, Double, Double) -> Array[DesignCandidate]
 
 pub fn discretization_step(Double, Int) -> Double
 
 pub fn empty_bed_contact_time(Double, Double, Double) -> Double
 
 pub fn estimate_thomas_time(Double, Double, Double, Double, Double, Double) -> Double
+
+pub fn feed_schedule_area(Array[FeedSegment]) -> Double
+
+pub fn feed_schedule_duration(Array[FeedSegment]) -> Double
+
+pub fn feed_schedule_flow(Array[FeedSegment], Double) -> Double
+
+pub fn feed_schedule_value(Array[FeedSegment], Double) -> Double
+
+pub fn feed_segment(Double, Double, Double, Double) -> FeedSegment
 
 pub fn flow_for_ebct(Double, Double, Double) -> Double
 
@@ -54,7 +96,57 @@ pub fn mass_transfer_zone_length(Double, Double, Double, Double) -> Double
 
 pub fn monotonic_breakthrough(Array[BreakthroughPoint]) -> Bool
 
+pub fn multi_breakthrough_order(MultiColumnResult, Array[Double], Double) -> Array[Int]
+
+pub fn multi_capacity_by_component(MultiColumnResult, Array[ComponentMetric], Double, Double) -> Array[Double]
+
+pub fn multi_column_config(Double, Double, Double, Double, Array[Double], Int, Double, Double) -> MultiColumnConfig
+
+pub fn multi_column_state(Int, Int) -> MultiColumnState
+
+pub fn multi_component_concentration(MultiColumnState, Int, Int, Int) -> Double
+
+pub fn multi_component_loading(MultiColumnState, Int, Int, Int) -> Double
+
+pub fn multi_component_metric(MultiColumnResult, Int, Double, Double, Double) -> ComponentMetric
+
+pub fn multi_component_metrics(MultiColumnResult, Array[Double], Double, Double) -> Array[ComponentMetric]
+
+pub fn multi_outlet_ratio(MultiColumnResult, Int, Double) -> Array[Double]
+
+pub fn multi_outlet_series(MultiColumnResult, Int) -> Array[Double]
+
+pub fn multi_profile_average(Array[Double]) -> Double
+
+pub fn multi_profile_integral(Array[Double], Double) -> Double
+
+pub fn multi_profile_maximum(Array[Double]) -> Double
+
+pub fn multi_profile_minimum(Array[Double]) -> Double
+
+pub fn multi_profile_nonnegative(Array[Double]) -> Bool
+
+pub fn multi_selectivity(Array[ComponentMetric], Int, Int) -> Double
+
+pub fn multi_stability_report(MultiColumnResult) -> Double
+
+pub fn multi_time_average(MultiColumnResult, Int) -> Double
+
+pub fn multi_time_quantile(MultiColumnResult, Int, Double) -> Double
+
+pub fn multi_total_removed(Array[ComponentMetric]) -> Double
+
 pub fn normalized_curve(Array[BreakthroughPoint], Double) -> Array[BreakthroughPoint]
+
+pub fn operating_average_removal(Array[OperatingPoint]) -> Double
+
+pub fn operating_integral_removal(Array[OperatingPoint]) -> Double
+
+pub fn operating_point(Double, Double, Double, Double) -> OperatingPoint
+
+pub fn operating_points_from_curve(Array[BreakthroughPoint], Double, Double) -> Array[OperatingPoint]
+
+pub fn operating_pressure_energy(Array[OperatingPoint], Double) -> Double
 
 pub fn peclet_number(Double, Double, Double) -> Double
 
@@ -68,6 +160,8 @@ pub fn ramp_feed(Double, Double, Double, Double) -> Double
 
 pub fn ratio_at(BreakthroughPoint) -> Double
 
+pub fn regeneration_step(String, Double, Double, Double, Double) -> RegenerationStep
+
 pub fn removal_area(Array[BreakthroughPoint]) -> Double
 
 pub fn residence_distribution(Double, Double, Double) -> Double
@@ -78,17 +172,27 @@ pub fn residence_variance(Array[Double], Array[Double]) -> Double
 
 pub fn reynolds_particle(Double, Double, Double, Double) -> Double
 
+pub fn run_scenarios(ColumnSimulationConfig, (Double, Double) -> Double, (Double) -> Double, Array[Double], Double, Double, Double) -> Array[ScenarioResult]
+
 pub fn safety_factor(Double, Double) -> Double
+
+pub fn scenario_scales(Int, Double, Double) -> Array[Double]
 
 pub fn service_time(Double, Double, Double, Double) -> Double
 
 pub fn simulate_column(ColumnSimulationConfig, (Double) -> Double, (Double) -> Double) -> ColumnSimulationResult
+
+pub fn simulate_multicomponent_column(MultiColumnConfig, Int, (Int, Double, Array[Double]) -> Double, (Int, Double) -> Double) -> MultiColumnResult
+
+pub fn simulate_segmented_column(ColumnSimulationConfig, (Double) -> Double, Array[FeedSegment]) -> ColumnSimulationResult
 
 pub fn square_wave(Double, Double, Double, Double) -> Double
 
 pub fn stable_upwind_time_step(Double, Double, Double) -> Double
 
 pub fn summarize_breakthrough(Array[BreakthroughPoint], Double, Double) -> BreakthroughMetrics
+
+pub fn summarize_scenarios(Array[ScenarioResult]) -> ScenarioSummary
 
 pub fn superficial_velocity(Double, Double) -> Double
 
@@ -124,6 +228,17 @@ pub(all) struct BreakthroughPoint {
   outlet_ratio : Double
 } derive(Eq, @debug.Debug)
 
+pub struct ColumnCycleResult {
+  operating_points : Array[OperatingPoint]
+  adsorbed_mass : Double
+  treated_volume : Double
+  average_removal : Double
+  breakthrough_time : Double
+  pressure_energy : Double
+  recovered_fraction : Double
+  valid : Bool
+}
+
 pub(all) struct ColumnSimulationConfig {
   bed_length : Double
   velocity : Double
@@ -141,6 +256,34 @@ pub(all) struct ColumnSimulationResult {
   final_adsorbed_profile : Array[Double]
 } derive(Eq, @debug.Debug)
 
+pub struct ComponentMetric {
+  component : Int
+  breakthrough_time : Double
+  outlet_area : Double
+  removed_mass : Double
+  average_removal : Double
+  mass_balance_error : Double
+}
+
+pub struct DesignCandidate {
+  length : Double
+  diameter : Double
+  flow_rate : Double
+  bed_mass : Double
+  contact_time : Double
+  pressure_drop : Double
+  service_time : Double
+  objective : Double
+  feasible : Bool
+}
+
+pub struct FeedSegment {
+  start : Double
+  finish : Double
+  concentration : Double
+  flow_rate : Double
+}
+
 pub(all) struct FixedBedParams {
   bed_length : Double
   velocity : Double
@@ -148,6 +291,68 @@ pub(all) struct FixedBedParams {
   bulk_density : Double
   initial_concentration : Double
 } derive(Eq, @debug.Debug)
+
+pub struct MultiColumnConfig {
+  bed_length : Double
+  velocity : Double
+  porosity : Double
+  bulk_density : Double
+  ldf_coefficients : Array[Double]
+  grid_points : Int
+  time_step : Double
+  total_time : Double
+}
+
+pub struct MultiColumnResult {
+  times : Array[Double]
+  outlet_concentrations : Array[Array[Double]]
+  final_concentration_profiles : Array[Array[Double]]
+  final_adsorbed_profiles : Array[Array[Double]]
+  mass_balance_errors : Array[Double]
+  stable : Bool
+}
+
+pub struct MultiColumnState {
+  concentration : Array[Double]
+  adsorbed : Array[Double]
+}
+
+pub struct OperatingPoint {
+  time : Double
+  inlet : Double
+  outlet : Double
+  ratio : Double
+  removal : Double
+  pressure_drop : Double
+}
+
+pub struct RegenerationStep {
+  name : String
+  duration : Double
+  flow_rate : Double
+  temperature : Double
+  recovery_fraction : Double
+}
+
+pub struct ScenarioResult {
+  scenario : Int
+  parameter_scale : Double
+  breakthrough_time : Double
+  capacity : Double
+  removal : Double
+  pressure_drop : Double
+}
+
+pub struct ScenarioSummary {
+  mean_breakthrough : Double
+  p05_breakthrough : Double
+  p50_breakthrough : Double
+  p95_breakthrough : Double
+  mean_capacity : Double
+  worst_removal : Double
+  best_removal : Double
+  scenarios : Array[ScenarioResult]
+}
 
 pub(all) struct ThomasParams {
   k_th : Double
