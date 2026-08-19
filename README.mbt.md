@@ -1,26 +1,51 @@
 # moonbit-adsorption
 
-`moonbit-adsorption` 是一个纯 MoonBit 的吸附过程计算库，面向水处理、气体净化、材料表征和固定床工艺的可复现实验计算。项目以可组合的数值 API 为核心，不依赖 Python、C 或闭源运行时。
+A pure MoonBit library for adsorption equilibrium models, batch kinetics, and fixed-bed column analysis. It is designed for reproducible calculations in water treatment, gas purification, materials characterization, and adsorption-process engineering.
 
-## 能力范围
+## Project positioning
 
-- 等温线：Langmuir、Freundlich、Temkin、Sips、Toth、Redlich–Peterson、BET、Dubinin–Radushkevich、Halsey、Harkin–Jura。
-- 参数辨识：原始非线性空间的 NLLS 拟合、Nelder–Mead 优化、R²、RMSE、MAE、AIC/BIC 和局部敏感性。
-- 动力学：拟一级、拟二级、Elovich 和颗粒内扩散模型，带半吸附时间、初始速率和线性回归评估。
-- 固定床：Thomas、Yoon–Nelson、Clark、BDST 工程公式，以及一维迎风 FDM + RK4 动态列模拟。
-- 工程工具：突破曲线插值、5/10/50/90% 突破时间、处理体积、去除容量、MTZ、EBCT、Ergun 压降、Courant/Péclet/Da 数。
-- 数据工具：统计摘要、误差指标、百分位数、移动平均、插值、矩阵和 2×2 线性求解、实验设计与敏感性分析。
+The library provides composable numerical building blocks rather than a single application workflow:
 
-## 快速开始
+- fit adsorption models directly in the original physical space;
+- evaluate batch-kinetic and equilibrium curves;
+- simulate one-dimensional fixed-bed breakthrough behavior;
+- derive engineering metrics from experimental or simulated curves;
+- keep the core implementation portable across MoonBit targets.
+
+## Core capabilities
+
+### Equilibrium models
+
+Langmuir, Freundlich, Temkin, Sips, Toth, Redlich–Peterson, BET, Dubinin–Radushkevich, Halsey, and Harkin–Jura prediction and fitting APIs.
+
+### Kinetic models
+
+Pseudo-first-order, pseudo-second-order, Elovich, and intraparticle-diffusion models, including parameter fitting, initial-rate calculations, half-time estimates, and regression metrics.
+
+### Fixed-bed analysis
+
+Thomas, Yoon–Nelson, Clark, and BDST equations; breakthrough interpolation; 5%, 10%, 50%, and 90% threshold times; treated volume; removal-capacity estimates; MTZ, EBCT, Ergun pressure drop, and common dimensionless groups.
+
+### Numerical utilities
+
+Nelder–Mead optimization, linear regression, error metrics, descriptive statistics, interpolation, smoothing, dense-matrix operations, experiment design, and sensitivity analysis.
+
+## Quick start
+
+Install the module in a MoonBit project:
 
 ```bash
 moon add weidekais/moonbit-adsorption
-moon check
-moon test
-moon run --target native benchmarks
 ```
 
-最小拟合示例：
+Run the checks and tests:
+
+```bash
+moon check
+moon test
+```
+
+Fit a Langmuir model:
 
 ```mbt check
 test {
@@ -36,52 +61,73 @@ test {
 }
 ```
 
-固定床模拟结果可以进一步用 `@fixed_bed.summarize_breakthrough` 转换成工程指标：
+## Command-line example
 
-```mbt nocheck
-let metrics = @fixed_bed.summarize_breakthrough(result.breakthrough_curve, 10.0, 2.0)
-println(metrics.c50_time)
-println(metrics.removal_capacity)
-```
-
-## 可复现实验基准
-
-基准入口位于 `benchmarks/main.mbt`，使用 5 个 Langmuir 数据点拟合参数，并运行 51 个空间网格、1,000 个时间步的固定床模拟。一次本地 Windows native 运行的输出为：
-
-| 指标 | 实测值 |
-| --- | ---: |
-| 拟合 `q_m` | 10.000000000024196 |
-| 拟合 `k_l` | 0.499999999996915 |
-| `R²` | 1 |
-| 模拟步数 | 1,000 |
-| 50% 突破时间 | 9.99 |
-| 去除容量指标 | 199.1335926829373 |
-| 命令端到端耗时 | 1,781.84 ms |
-
-端到端耗时会受机器、首次编译和 MoonBit 缓存影响；模型输出和步数是可复现的数值基准。
-
-## 测试与质量门禁
-
-仓库当前包含 8,287 行 `.mbt` 源码（含测试）和 306 个测试用例。CI 覆盖 `moon check --target all`、`moon test --target all`、native 测试、`moon fmt --check`、`moon info` 和接口漂移检查。建议本地提交前执行：
+The repository includes a runnable benchmark and end-to-end example:
 
 ```bash
-moon fmt
+moon run --target native benchmarks
+```
+
+The example fits equilibrium data, runs a fixed-bed simulation, and prints the resulting breakthrough metrics. It is intended as a small executable reference for integrating the library into a command-line workflow.
+
+## Architecture
+
+```text
+utils/
+  optimization, regression, statistics, validation, matrix, series, experiment design
+isotherm/
+  equilibrium models, kinetic models, fitting, model comparison
+fixed_bed/
+  dynamic column simulation, breakthrough analysis, engineering design helpers
+benchmarks/
+  runnable native example and reproducible numerical workload
+```
+
+The package boundaries follow the computational flow: `utils` provides reusable numerical primitives, `isotherm` owns equilibrium and batch-kinetic models, and `fixed_bed` consumes model callbacks to simulate and analyze column behavior.
+
+## Benchmark
+
+The benchmark uses five Langmuir observations and a fixed-bed workload with 51 spatial grid points and 1,000 time steps. One local Windows native run produced:
+
+| Measurement | Result |
+| --- | ---: |
+| fitted `q_m` | 10.000000000024196 |
+| fitted `k_l` | 0.499999999996915 |
+| `R²` | 1 |
+| simulation steps | 1,000 |
+| 50% breakthrough time | 9.99 |
+| removal-capacity metric | 199.1335926829373 |
+| end-to-end command time | 1,781.84 ms |
+
+Numerical outputs are the stable reference values. End-to-end time depends on the host, compiler cache, and first-build state.
+
+## Tests
+
+Run the complete local validation sequence:
+
+```bash
+moon fmt --check
 moon check --target all --deny-warn
 moon test --target all --deny-warn
 moon info
 git diff --exit-code
 ```
 
-## 包结构
+The test suite covers equilibrium fitting, kinetic fitting, optimizer behavior, fixed-bed simulation, breakthrough metrics, numerical utilities, invalid inputs, and boundary conditions.
 
-```text
-utils/       统计、回归、优化、矩阵、实验设计和数据校验
-isotherm/    等温线、动力学、拟合和模型比较
-fixed_bed/   固定床动态模拟、突破曲线和工程设计
-benchmarks/  可直接运行的端到端基准
-```
+## CI
 
-## 许可证与来源
+GitHub Actions runs on Ubuntu, macOS, and Windows. The workflow installs the current MoonBit stable toolchain using the official platform installers and runs:
 
-本项目为独立的 MoonBit 原生实现，不复制第三方源代码；公式来自公开的化学工程与吸附过程文献中的经典模型。项目以 Apache-2.0 发布，详见根目录 [LICENSE](LICENSE)。
+- `moon fmt --check`;
+- `moon check --target all --deny-warn`;
+- `moon test --target all --deny-warn`;
+- native regression tests;
+- generated public-interface checks;
+- the runnable benchmark.
+
+## License
+
+Apache-2.0. See [LICENSE](LICENSE).
 
