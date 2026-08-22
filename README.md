@@ -136,5 +136,3 @@ GitHub Actions runs on Ubuntu, macOS, and Windows. The workflow installs the cur
 ## License
 
 Apache-2.0. See [LICENSE](LICENSE).
-
-
