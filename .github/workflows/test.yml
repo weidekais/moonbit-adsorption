@@ -41,6 +41,9 @@ jobs:
       - name: Check all targets
         run: moon check --target all --deny-warn
 
+      - name: Build all targets
+        run: moon build --target all --deny-warn
+
       - name: Test all targets
         run: moon test --target all --deny-warn
 
